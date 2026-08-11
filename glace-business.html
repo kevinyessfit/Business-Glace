@@ -4,7 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GLACE BUSINESS — De ta cuisine à ta première vente en 7 jours</title>
 <meta name="description" content="10 recettes de glaces artisanales sans machine + la méthode pour calculer ton coût, fixer ton prix et trouver tes 30 premiers clients. Ebook PDF 38 pages + 2 bonus imprimables. 3 000 FCFA.">
-<meta name="theme-color" content="#E8542A">
+<meta name="theme-color" content="#C43F18">
+<!-- Favicon en SVG inline : évite une requête et le 404 sur /favicon.ico -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23C43F18'/%3E%3Ccircle cx='16' cy='12.5' r='7' fill='%23FFD400'/%3E%3Cpath d='M9.5 15.5h13L16 28z' fill='%23FBF0DC'/%3E%3C/svg%3E">
 <link rel="canonical" href="https://businessglace.netlify.app/">
 
 <!-- Open Graph / WhatsApp -->
@@ -686,15 +688,36 @@ footer p{margin:0 0 .5em}
 (function(){
   var v=document.getElementById('fond-video');
   if(!v)return;
-  var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection||{};
-  var reseauLent=c.saveData===true||/2g|3g/.test(c.effectiveType||'');
-  var animReduite=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reseauLent||animReduite)return;
-  /* Le hero fait toute la largeur : sur grand écran, du 640x360 étiré bavait.
-     Le mobile — 90 % du trafic, et celui qui paie sa data — garde la version légère. */
-  v.src=innerWidth>900?v.dataset.srcHd:v.dataset.src;
-  var p=v.play();
-  if(p&&p.catch)p.catch(function(){});
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+
+  function tropLent(){
+    if(!c)return false;
+    /* saveData est un choix explicite du visiteur, on le respecte.
+       effectiveType, lui, n'est qu'une estimation glissante du débit : au
+       chargement à froid Chrome annonce couramment "3g" sur une connexion
+       parfaitement correcte, puis se corrige. Bloquer sur "3g" empêchait
+       la vidéo de se charger presque partout. On ne bloque donc que sur
+       les paliers réellement inexploitables. */
+    return c.saveData===true||/^(slow-2g|2g)$/.test(c.effectiveType||'');
+  }
+
+  function charger(){
+    if(v.src||tropLent())return;
+    /* Le hero fait toute la largeur : sur grand écran, du 640 étiré bavait.
+       Le mobile — 90 % du trafic, et celui qui paie sa data — garde la version légère. */
+    v.src=innerWidth>900?v.dataset.srcHd:v.dataset.src;
+    var p=v.play();
+    if(p&&p.catch)p.catch(function(){
+      /* Lecture auto refusée : on retente au premier geste du visiteur. */
+      document.addEventListener('pointerdown',function(){v.play();},{once:true});
+    });
+  }
+
+  charger();
+  /* L'estimation initiale est souvent fausse : on réessaie dès que le
+     navigateur la révise. */
+  if(c&&c.addEventListener)c.addEventListener('change',charger);
 })();
 
 /* Tant que le hero est à l'écran, on ne garde que le bandeau du compteur.
