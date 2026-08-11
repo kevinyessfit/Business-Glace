@@ -1,0 +1,5 @@
+# Netlify sert index.html à la racine ; le fichier s'appelle glace-business.html.
+# Le code 200 est une réécriture, pas une redirection : l'URL affichée reste le
+# domaine nu, ce qui compte pour un lien partagé sur WhatsApp ou TikTok.
+# Règle limitée à "/" — un joker /* casserait les chemins des .webp et .mp4.
+/    /glace-business.html    200
