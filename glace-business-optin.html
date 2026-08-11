@@ -11,6 +11,16 @@
 <meta name="theme-color" content="#C43F18">
 <!-- Favicon en SVG inline : évite une requête et le 404 sur /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23C43F18'/%3E%3Ccircle cx='16' cy='12.5' r='7' fill='%23FFD400'/%3E%3Cpath d='M9.5 15.5h13L16 28z' fill='%23FBF0DC'/%3E%3C/svg%3E">
+<!-- VARIANTE OPT-IN — à tester contre la page principale, jamais à déployer seule.
+     Différence unique avec glace-business.html : les boutons d'achat ouvrent une
+     modale prénom + e-mail avant de rediriger vers le paiement.
+     L'intérêt est de constituer une base de contacts relançable ; le coût est une
+     étape de friction de plus, qui fait mécaniquement baisser la conversion
+     immédiate. À 3 000 F la marge par vente est faible : cette variante n'est
+     rentable que si les relances convertissent réellement. D'où le test A/B.
+     Cette page est volontairement exclue de l'indexation pour ne pas faire de
+     doublon avec la page principale. -->
+<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://businessglace.netlify.app/">
 
 <!-- Open Graph / WhatsApp -->
@@ -443,6 +453,45 @@ footer p{margin:0 0 .5em}
   box-shadow:0 6px 18px rgba(0,0,0,.28);
 }
 .wa svg{width:22px;height:22px;flex:0 0 auto;fill:currentColor}
+
+/* ---- MODALE DE CAPTURE (variante opt-in uniquement) ----
+   <dialog> natif : la gestion du focus, de la touche Échap et du fond inerte est
+   assurée par le navigateur. Aucune librairie, aucun piège à focus à écrire. */
+.modale{
+  border:0;padding:0;width:min(440px,calc(100vw - 28px));
+  border-radius:var(--r-l);background:var(--blanc);color:var(--texte);
+  box-shadow:0 24px 60px rgba(11,11,77,.45);
+}
+.modale::backdrop{background:rgba(11,11,77,.72)}
+/* Réserve à droite : sans elle, la croix de fermeture chevauche le titre à 360 px. */
+.modale-tete{background:var(--navy);color:#fff;padding:20px 52px 18px 20px;position:relative}
+.modale-tete h2{color:var(--jaune);font-size:22px;margin:0 0 .35em}
+.modale-tete p{font-size:14.5px;color:#E6E6F5;margin:0}
+.modale-fermer{
+  position:absolute;top:8px;right:8px;width:44px;height:44px;
+  background:none;border:0;color:#fff;font-size:26px;line-height:1;cursor:pointer;border-radius:50%;
+}
+.modale-fermer:hover{background:rgba(255,255,255,.14)}
+.modale-corps{padding:20px}
+.champ{display:block;margin:0 0 14px}
+.champ span{display:block;font-family:var(--titre);font-weight:700;font-size:14px;margin:0 0 5px;color:var(--navy)}
+.champ input{
+  width:100%;min-height:52px;padding:12px 14px;font-family:var(--corps);font-size:16.5px;
+  border:2px solid rgba(58,33,19,.28);border-radius:var(--r-s);background:#fff;color:var(--texte);
+}
+.champ input:focus-visible{outline:3px solid var(--navy);outline-offset:2px;border-color:var(--navy)}
+.champ input[aria-invalid="true"]{border-color:var(--orange-d);background:#FFF4F0}
+.erreur{display:block;font-size:14px;font-weight:700;color:var(--orange-d);margin:6px 0 0;min-height:1px}
+/* Dire pourquoi l'e-mail est demandé, à l'endroit exact où il est demandé.
+   Sans cette phrase, le champ est perçu comme un péage et la modale fait fuir. */
+.pourquoi-mail{font-size:14px;background:var(--creme);border-radius:var(--r-s);padding:12px 13px;margin:0 0 16px}
+.pourquoi-mail b{color:var(--navy)}
+.modale-note{font-size:13px;text-align:center;margin:12px 0 0;opacity:.75}
+.modale-passe{
+  display:block;width:100%;background:none;border:0;margin:10px 0 0;padding:12px;
+  font-family:var(--corps);font-size:14px;color:var(--texte);opacity:.7;
+  text-decoration:underline;cursor:pointer;min-height:48px;
+}
 
 @media (min-width:600px){
   body{font-size:18px}
@@ -978,7 +1027,128 @@ footer p{margin:0 0 .5em}
   </div>
 </div>
 
+<!-- ============ MODALE DE CAPTURE ============
+     Injectée dans le flux normal : sans JS elle reste fermée et invisible, et
+     les boutons continuent de pointer directement vers le paiement. -->
+<dialog class="modale" id="modale-optin" aria-labelledby="t-optin">
+  <div class="modale-tete">
+    <h2 id="t-optin">Où je t'envoie ton guide ?</h2>
+    <p>Deux champs, puis tu passes au paiement.</p>
+    <button type="button" class="modale-fermer" data-fermer aria-label="Fermer">×</button>
+  </div>
+
+  <form class="modale-corps" id="form-optin" novalidate>
+    <label class="champ">
+      <span>Ton prénom</span>
+      <input type="text" name="prenom" id="optin-prenom" autocomplete="given-name"
+             required aria-describedby="err-prenom">
+      <span class="erreur" id="err-prenom" role="alert"></span>
+    </label>
+
+    <label class="champ">
+      <span>Ton e-mail</span>
+      <input type="email" name="email" id="optin-email" autocomplete="email"
+             inputmode="email" required aria-describedby="err-email">
+      <span class="erreur" id="err-email" role="alert"></span>
+    </label>
+
+    <p class="pourquoi-mail">
+      <b>Pourquoi je te demande ton e-mail :</b> c'est là que le lien de
+      téléchargement est renvoyé si tu perds la page après le paiement, et c'est
+      par là que je t'envoie les mises à jour du guide. <b>Je ne le revends à
+      personne et je ne t'inscris à aucune liste publicitaire.</b> Tu peux te
+      désinscrire en un clic.
+    </p>
+
+    <button type="submit" class="cta">CONTINUER VERS LE PAIEMENT<small>3 000 F · Mobile Money</small></button>
+
+    <!-- Sortie de secours : sans elle, la modale est un mur. Le visiteur qui
+         refuse de donner son e-mail doit pouvoir acheter quand même — c'est une
+         vente perdue à chaque fois qu'on la retire. -->
+    <button type="button" class="modale-passe" data-passe>Continuer sans donner mon e-mail</button>
+
+    <p class="modale-note">Tu seras redirigé vers la page de paiement sécurisée.</p>
+  </form>
+</dialog>
+
 <script>
+/* ---- CAPTURE D'E-MAIL AVANT PAIEMENT (variante opt-in) ----
+
+   ENDPOINT_OPTIN : adresse qui reçoit le prénom et l'e-mail.
+   Tant qu'elle vaut null, LES CONTACTS NE SONT ENREGISTRÉS NULLE PART — la
+   modale fonctionne, redirige correctement, mais la base ne se remplit pas.
+   Renseigner l'URL du formulaire de ton outil d'e-mailing (Brevo, Systeme.io,
+   MailerLite, Google Apps Script…) avant de lancer le test A/B, sinon la
+   variante n'a aucun intérêt et ne fait que baisser la conversion.
+
+       var ENDPOINT_OPTIN = 'https://exemple.com/api/contacts';
+*/
+var ENDPOINT_OPTIN = null;
+
+(function(){
+  var modale=document.getElementById('modale-optin');
+  var form=document.getElementById('form-optin');
+  if(!modale||!form||!modale.showModal)return;   /* <dialog> absent : les liens restent directs */
+
+  var prenom=document.getElementById('optin-prenom');
+  var email=document.getElementById('optin-email');
+  var cible='';                                   /* URL de paiement du bouton cliqué */
+
+  /* Le lien d'achat cliqué reste la source de vérité de la destination :
+     si l'URL de paiement change dans le HTML, rien à modifier ici. */
+  document.addEventListener('click',function(e){
+    var lien=e.target.closest?e.target.closest('a.cta'):null;
+    if(!lien||!lien.href)return;
+    e.preventDefault();
+    cible=lien.href;
+    modale.showModal();
+    prenom.focus();
+  });
+
+  modale.addEventListener('click',function(e){
+    if(e.target.matches('[data-fermer]'))modale.close();
+    if(e.target.matches('[data-passe]')){modale.close();aller();}
+  });
+
+  function aller(){if(cible)location.href=cible;}
+
+  function faute(champ,zone,message){
+    champ.setAttribute('aria-invalid',message?'true':'false');
+    document.getElementById(zone).textContent=message||'';
+    return !message;
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    var okPrenom=faute(prenom,'err-prenom',
+      prenom.value.trim().length>=2?'':'Écris ton prénom.');
+    /* Validation volontairement large : un point après un @, rien de plus.
+       Une expression stricte rejette des adresses valides et fait perdre des
+       ventes pour rien — la vérification réelle, c'est l'e-mail qui arrive. */
+    var okEmail=faute(email,'err-email',
+      /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())?'':'Vérifie ton e-mail, il semble incomplet.');
+
+    if(!okPrenom){prenom.focus();return;}
+    if(!okEmail){email.focus();return;}
+
+    if(ENDPOINT_OPTIN){
+      /* keepalive : la requête survit à la redirection qui suit immédiatement.
+         Le résultat n'est pas attendu — faire patienter l'acheteur devant un
+         spinner pour enregistrer un contact serait un mauvais échange. */
+      try{
+        fetch(ENDPOINT_OPTIN,{
+          method:'POST',keepalive:true,
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({prenom:prenom.value.trim(),email:email.value.trim(),source:'page-glace-business'})
+        }).catch(function(){});
+      }catch(err){}
+    }
+
+    aller();
+  });
+})();
+
 /* Fond vidéo du hero : 1,3 Mo, soit dix fois le reste de la page. On ne le
    télécharge que si la connexion le permet. Sinon l'aplat orange suffit. */
 (function(){
