@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GLACE BUSINESS — De ta cuisine à ta première vente en 7 jours</title>
+<meta name="description" content="10 recettes de glaces artisanales sans machine + la méthode pour calculer ton coût, fixer ton prix et trouver tes 30 premiers clients. Ebook PDF 38 pages + 2 bonus imprimables. 3 000 FCFA.">
+<meta name="theme-color" content="#E8542A">
+<link rel="canonical" href="">
+
+<!-- Open Graph / WhatsApp -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="GLACE BUSINESS — De ta cuisine à ta première vente en 7 jours">
+<meta property="og:description" content="Fabriquer la glace, c'est la partie facile. Ce guide t'apprend à la vendre sans perdre d'argent. 38 pages + 2 bonus imprimables — 3 000 FCFA.">
+<!-- REMPLACER : préfixer par ton domaine → https://tondomaine.com/glace-business-702.jpg (WhatsApp exige une URL absolue) -->
+<meta property="og:image" content="glace-business-702.jpg">
+<meta property="og:image:width" content="702">
+<meta property="og:image:height" content="260">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="GLACE BUSINESS">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700;800&display=swap">
+
+<style>
+:root{
+  --orange:#E8542A;
+  --orange-d:#C43F18;
+  --navy:#0B0B4D;
+  --jaune:#FFD400;
+  --brun:#3A2113;
+  --creme:#FBF0DC;
+  --texte:#2B2118;
+  --blanc:#FFFDF8;
+  --r-s:12px;
+  --r-m:18px;
+  --r-l:24px;
+  --pad:20px;
+  --bandeau:42px; /* hauteur du bandeau compteur, seule partie visible dans le hero */
+  --titre:'Poppins','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --corps:'Lato','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--creme);
+  color:var(--texte);
+  font-family:var(--corps);
+  font-size:17px;
+  line-height:1.65;
+  padding-bottom:118px; /* barre collante : chrono + prix + CTA */
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--titre);line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-weight:800;font-size:clamp(29px,7.6vw,52px)}
+h2{font-weight:800;font-size:clamp(25px,6.4vw,40px)}
+h3{font-weight:700;font-size:clamp(19px,4.8vw,24px)}
+p{margin:0 0 1.05em}
+strong{font-weight:700}
+.wrap{max-width:720px;margin:0 auto;padding:0 var(--pad);position:relative;z-index:2}
+section{padding:54px 0;position:relative;overflow:hidden}
+.solo{font-family:var(--titre);font-weight:700;font-size:clamp(20px,5.2vw,27px);line-height:1.3}
+
+/* ---- surtitres ---- */
+.kicker{
+  display:inline-block;font-family:var(--titre);font-weight:700;
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  margin:0 0 14px;padding:6px 13px;border-radius:99px;
+  background:var(--jaune);color:var(--brun);
+}
+.kicker.inv{background:rgba(255,255,255,.16);color:#fff}
+
+/* ---- cercles déco ---- */
+.blob{position:absolute;border-radius:50%;background:var(--jaune);pointer-events:none;z-index:0;opacity:.9}
+.blob.pale{background:rgba(255,212,0,.22)}
+.blob.o{background:rgba(232,84,42,.14)}
+
+/* ---- boutons ---- */
+.cta{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:2px;width:100%;min-height:62px;padding:14px 20px;
+  background:var(--orange-d);color:#fff;text-decoration:none;text-align:center;
+  font-family:var(--titre);font-weight:800;font-size:19px;line-height:1.2;
+  border-radius:var(--r-m);border:0;cursor:pointer;
+  box-shadow:0 5px 0 #8f2c0f;
+  transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.cta small{font-family:var(--corps);font-weight:700;font-size:13.5px;opacity:.92;letter-spacing:.02em}
+.cta:hover,.cta:focus-visible{background:var(--orange);transform:translateY(-2px);box-shadow:0 7px 0 #8f2c0f}
+.cta:active{transform:translateY(3px);box-shadow:0 2px 0 #8f2c0f}
+.cta.jaune{background:var(--jaune);color:var(--brun);box-shadow:0 5px 0 #b89800}
+.cta.jaune:hover,.cta.jaune:focus-visible{background:#ffe14d;box-shadow:0 7px 0 #b89800}
+.cta.jaune:active{box-shadow:0 2px 0 #b89800}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.sous-cta{font-size:13.5px;text-align:center;margin:11px 0 0;opacity:.8}
+
+/* ---- HERO ---- */
+.hero{
+  /* orange foncé et non vif : le jaune du sous-titre passait sous le seuil AA
+     sur #E8542A (2,56:1). Sur #C43F18 il atteint 3,60:1. */
+  background:var(--orange-d);color:#fff;padding:34px 0 44px;text-align:center;
+  position:relative;overflow:hidden; /* ancre et rogne les cercles décoratifs */
+}
+.hero-media{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-media video{width:100%;height:100%;object-fit:cover;display:block}
+/* Voile quasi nul : simple dégradé aux bords pour rattacher la vidéo au reste.
+   Le contraste du texte ne dépend pas de lui mais des blocs opaques posés dessus. */
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(58,33,19,.18),rgba(58,33,19,.02) 35%,rgba(58,33,19,.26));
+}
+/* Panneau derrière le texte du hero. Sur le plan le plus clair de la vidéo,
+   le blanc tient 7,4:1 et le jaune 5,2:1 — au-dessus du seuil AA. */
+.hero-texte{
+  position:relative;z-index:2;
+  background:rgba(58,33,19,.78);
+  border-radius:var(--r-l);
+  padding:22px 16px 24px;
+  margin:0 0 22px;
+}
+.hero-texte .promesse{margin-bottom:0}
+.hero h1{color:#fff}
+.hero h1 em{font-style:normal;color:var(--jaune);display:block}
+.hero .promesse{font-size:clamp(17px,4.3vw,20px);max-width:34ch;margin:0 auto 24px;opacity:.97}
+.visuel{
+  background:var(--creme);border-radius:var(--r-l);padding:8px;
+  box-shadow:0 14px 30px rgba(58,33,19,.3);margin:0 auto 24px;max-width:340px;
+}
+.visuel img{border-radius:14px;width:100%;background:var(--navy)}
+.prix-bloc{
+  background:var(--navy);border-radius:var(--r-l);padding:20px 18px;margin:0 0 18px;
+}
+.prix-ligne{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap}
+.prix-old{font-family:var(--titre);font-weight:700;font-size:19px;color:#cfcfe8;text-decoration:line-through}
+.prix-new{font-family:var(--titre);font-weight:800;font-size:clamp(38px,10vw,54px);color:var(--jaune);line-height:1}
+.prix-note{font-size:14px;color:#e2e2f2;margin:8px 0 0}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 0;padding:0;list-style:none}
+/* Opaques, pas juste teintés : ces puces flottent directement sur la vidéo. */
+.hero-tags li{font-size:13.5px;font-weight:700;background:rgba(58,33,19,.78);padding:7px 12px;border-radius:99px}
+.hero .sous-cta{
+  display:inline-block;background:rgba(58,33,19,.78);
+  padding:8px 15px;border-radius:99px;opacity:1;
+}
+
+/* ---- MIROIR ---- */
+.miroir{background:var(--brun);color:#F6E7D2}
+.miroir h2{color:var(--jaune)}
+.miroir p{max-width:46ch}
+.recit{font-size:clamp(17.5px,4.4vw,20px);line-height:1.75}
+.recit .beat{display:block;margin:1.15em 0;font-family:var(--titre);font-weight:700;color:#fff}
+.citations{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:12px}
+.citations li{
+  background:rgba(255,255,255,.07);border-left:5px solid var(--orange);
+  border-radius:0 var(--r-s) var(--r-s) 0;padding:13px 15px;font-style:italic;font-size:16px;
+}
+
+/* ---- BASCULE ---- */
+.bascule{background:var(--navy);color:#fff;text-align:center}
+.pivot{
+  font-family:var(--titre);font-weight:800;font-size:clamp(24px,6.6vw,42px);line-height:1.22;
+  margin:0 auto 26px;max-width:18ch;
+}
+.pivot span{color:var(--jaune)}
+.bascule p{max-width:44ch;margin-left:auto;margin-right:auto;color:#E6E6F5}
+
+/* ---- TRANSFORMATION ---- */
+.frise{list-style:none;margin:26px 0 0;padding:0;position:relative}
+.frise::before{content:"";position:absolute;left:17px;top:12px;bottom:12px;width:4px;background:var(--jaune);border-radius:4px}
+.frise li{position:relative;padding:0 0 22px 52px;font-size:16.5px}
+.frise li:last-child{padding-bottom:0}
+.frise li::before{
+  content:"";position:absolute;left:6px;top:4px;width:26px;height:26px;border-radius:50%;
+  background:var(--orange);border:4px solid var(--creme);box-shadow:0 0 0 3px var(--jaune);
+}
+.frise b{display:block;font-family:var(--titre);font-weight:700;font-size:18px;color:var(--navy)}
+
+/* ---- CARTES CONTENU ---- */
+.carte{background:var(--blanc);border-radius:var(--r-l);padding:22px 18px;margin:0 0 18px;border:2px solid rgba(58,33,19,.1)}
+.carte.mise-avant{border:3px solid var(--orange);box-shadow:0 10px 0 rgba(232,84,42,.16)}
+.carte h3{color:var(--navy)}
+.etiq{
+  display:inline-block;font-family:var(--titre);font-weight:800;font-size:12.5px;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--navy);color:var(--jaune);padding:5px 11px;border-radius:99px;margin:0 0 10px;
+}
+.etiq.chaud{background:var(--orange);color:#fff}
+.liste{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.liste li{position:relative;padding-left:29px;font-size:16px;max-width:62ch}
+.carte p{max-width:62ch}
+.liste li::before{
+  content:"";position:absolute;left:0;top:8px;width:15px;height:15px;border-radius:50%;
+  background:var(--jaune);border:3px solid var(--orange);
+}
+.liste li b{font-weight:700}
+.note{font-size:14.5px;background:var(--creme);border-radius:var(--r-s);padding:11px 13px;margin:14px 0 0}
+
+/* ---- BONUS ---- */
+.bonus{background:var(--jaune)}
+.bonus h2{color:var(--brun)}
+.carte-bonus{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:22px 18px;margin:0 0 16px}
+.carte-bonus h3{color:var(--jaune);margin-bottom:.35em}
+.carte-bonus p{color:#E6E6F5;margin-bottom:.7em}
+.valeur{display:inline-block;font-family:var(--titre);font-weight:800;font-size:15px;background:var(--orange);color:#fff;padding:6px 13px;border-radius:99px}
+.offert{font-family:var(--titre);font-weight:800;font-size:15px;color:var(--jaune);margin-left:8px}
+
+/* ---- POUR / PAS POUR ---- */
+.duo{display:grid;gap:16px}
+.col{border-radius:var(--r-l);padding:20px 18px}
+.col.oui{background:var(--navy);color:#fff}
+.col.oui h3{color:var(--jaune)}
+.col.non{background:var(--blanc);border:2px solid rgba(58,33,19,.16)}
+.col.non h3{color:var(--brun)}
+.check,.cross{list-style:none;margin:0;padding:0;display:grid;gap:11px;font-size:16px}
+.check li,.cross li{position:relative;padding-left:32px}
+.check li::before{content:"✓";position:absolute;left:0;top:-1px;font-weight:700;font-size:19px;color:var(--jaune)}
+.cross li::before{content:"✕";position:absolute;left:0;top:-1px;font-weight:700;font-size:18px;color:var(--orange-d)}
+
+/* ---- COMPTE À REBOURS ---- */
+.chrono{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  background:var(--jaune);color:var(--brun);border-radius:var(--r-m);
+  padding:13px 16px;margin:0 0 18px;text-align:center;
+}
+.chrono-lab{font-family:var(--titre);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.chrono-time{
+  font-family:var(--titre);font-weight:800;font-size:clamp(26px,7vw,34px);line-height:1;
+  font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:3px;
+}
+.chrono-time i{font-style:normal;font-size:.5em;font-weight:700;margin:0 5px 0 1px;opacity:.75}
+.chrono--barre{
+  flex-direction:row;justify-content:center;align-items:center;flex-wrap:wrap;gap:2px 9px;
+  background:none;color:var(--jaune);border-radius:0;padding:0;margin:0;
+  height:var(--bandeau);box-sizing:border-box;
+}
+.chrono--barre .chrono-lab{font-size:12.5px;letter-spacing:.04em;opacity:.9}
+.chrono--barre .chrono-time{font-size:17px}
+.chrono--barre .chrono-time i{opacity:.7;margin:0 3px 0 1px}
+
+/* ---- TÉMOIGNAGES ---- */
+.preuves{background:#F3E4C9}
+.duo-preuves{display:grid;gap:20px;margin:26px 0 0}
+.preuve{margin:0;background:var(--navy);border-radius:var(--r-l);padding:10px 10px 0;box-shadow:0 10px 24px rgba(58,33,19,.2)}
+.preuve img{width:100%;border-radius:14px;background:#0b141a}
+.preuve figcaption{
+  font-size:15px;line-height:1.5;color:#E6E6F5;padding:14px 8px 16px;
+}
+@media (min-width:600px){.duo-preuves{grid-template-columns:1fr 1fr;align-items:start}}
+
+/* ---- VALEUR / PRIX ---- */
+.valeurs{background:var(--brun);color:#F6E7D2}
+.valeurs h2{color:var(--jaune)}
+.tableau{width:100%;border-collapse:collapse;background:var(--blanc);color:var(--texte);border-radius:var(--r-m);overflow:hidden;font-size:15.5px}
+.tableau caption{text-align:left;font-size:14px;color:#F6E7D2;padding:0 0 10px}
+.tableau th,.tableau td{padding:13px 14px;text-align:left;border-bottom:1px solid rgba(58,33,19,.14)}
+.tableau td:last-child{text-align:right;white-space:nowrap;font-family:var(--titre);font-weight:700}
+.tableau tr.total td,.tableau tr.total th{background:var(--navy);color:#fff;font-family:var(--titre);font-weight:700}
+.tableau tr.total td{color:#cfcfe8;text-decoration:line-through}
+.tableau tr.today th{background:var(--jaune);color:var(--brun);font-family:var(--titre);font-weight:800;font-size:17px}
+.tableau tr.today td{background:var(--jaune);color:var(--brun);font-size:26px;font-weight:800;text-decoration:none}
+.tableau tr:last-child th,.tableau tr:last-child td{border-bottom:0}
+.perspective{margin:22px 0;font-size:16.5px;max-width:44ch}
+.banniere{width:100%;border-radius:var(--r-m);margin:0 0 20px;background:var(--navy)}
+
+/* ---- FAQ ---- */
+.faq details{background:var(--blanc);border-radius:var(--r-m);margin:0 0 11px;border:2px solid rgba(58,33,19,.1)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:16px 46px 16px 17px;min-height:56px;
+  font-family:var(--titre);font-weight:700;font-size:16.5px;color:var(--navy);position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  font-size:27px;font-weight:700;color:var(--orange-d);line-height:1;
+}
+.faq details[open] summary::after{content:"–"}
+.faq .rep{padding:0 17px 17px;font-size:16px}
+.faq .rep p:last-child{margin-bottom:0}
+
+/* ---- RASSURANCE ---- */
+.rassure{background:var(--navy);color:#fff}
+.rassure h2{color:var(--jaune)}
+.grille{display:grid;gap:12px;margin:24px 0 0}
+.item{background:rgba(255,255,255,.08);border-radius:var(--r-m);padding:15px 16px}
+.item b{display:block;font-family:var(--titre);font-weight:700;font-size:17px;color:var(--jaune);margin-bottom:3px}
+.item span{font-size:15px;color:#E6E6F5}
+.momo{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.momo li{font-family:var(--titre);font-weight:700;font-size:13.5px;background:var(--jaune);color:var(--brun);padding:7px 13px;border-radius:99px}
+
+/* ---- CLOTURE ---- */
+.cloture{background:var(--orange);color:#fff;text-align:center}
+.cloture h2{color:#fff;max-width:16ch;margin-left:auto;margin-right:auto}
+.cloture .solo{max-width:26ch;margin:0 auto 26px;color:var(--jaune)}
+.cloture .prix-bloc{max-width:420px;margin:0 auto 18px}
+footer{background:var(--brun);color:#D9C7B2;font-size:13.5px;text-align:center;padding:26px 0 34px}
+footer p{margin:0 0 .5em}
+
+/* ---- BARRE COLLANTE ---- */
+.barre{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  padding:0 14px calc(10px + env(safe-area-inset-bottom));
+  background:var(--navy);border-top:3px solid var(--jaune);
+  transition:transform .25s ease;will-change:transform;
+}
+.barre-row{display:flex;align-items:center;gap:12px}
+/* Dans le hero : la barre glisse vers le bas de la hauteur exacte de la ligne
+   prix + CTA, ce qui laisse le bandeau du compteur affleurer. transform seul :
+   pas de recalcul de layout, contrairement à une animation de hauteur. */
+.barre.compact{transform:translateY(calc(100% - var(--bandeau)))}
+.barre .info{line-height:1.15;flex:0 0 auto}
+.barre .info b{display:block;font-family:var(--titre);font-weight:800;font-size:22px;color:var(--jaune)}
+.barre .info span{font-size:12px;color:#cfcfe8;text-decoration:line-through}
+.barre .cta{flex:1;min-height:52px;font-size:17px;box-shadow:0 4px 0 #8f2c0f}
+
+@media (min-width:600px){
+  body{font-size:18px}
+  section{padding:72px 0}
+  .duo{grid-template-columns:1fr 1fr;align-items:start}
+  .grille{grid-template-columns:1fr 1fr}
+  .cta{max-width:460px;margin-left:auto;margin-right:auto}
+  .carte{padding:28px 26px}
+  .barre-row{justify-content:center;gap:22px}
+  .barre .cta{max-width:340px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+
+<!-- ============ 1. HERO ============ -->
+<header class="hero">
+  <!-- Fond vidéo décoratif. Chargé par JS uniquement hors mode économie de données
+       et hors 2G/3G : sur connexion lente, le hero reste un aplat orange. -->
+  <div class="hero-media" aria-hidden="true">
+    <video id="fond-video" data-src="glace-fond.mp4" data-src-hd="glace-fond-hd.mp4"
+           muted loop playsinline preload="none" tabindex="-1"></video>
+  </div>
+  <div class="blob" style="width:190px;height:190px;top:-70px;right:-70px;opacity:.35"></div>
+  <div class="blob pale" style="width:260px;height:260px;bottom:-130px;left:-110px"></div>
+  <div class="wrap">
+    <div class="hero-texte">
+      <span class="kicker inv">Ebook PDF + 2 bonus</span>
+      <h1>GLACE BUSINESS<em>De ta cuisine à ta première vente en 7 jours</em></h1>
+      <p class="promesse">10 recettes sans machine. Et surtout : la méthode pour savoir, chiffres en main, si tu gagnes de l'argent.</p>
+    </div>
+
+    <div class="visuel">
+      <img src="glace-business-600.webp" width="600" height="600" fetchpriority="high" decoding="async"
+           alt="Une vingtaine de pots de glace artisanale — vanille, fraise, chocolat, pistache, spéculoos — et des bâtonnets enrobés, présentés sur un plan de travail">
+    </div>
+
+    <div class="prix-bloc">
+      <div class="prix-ligne">
+        <span class="prix-old">18 000 F</span>
+        <span class="prix-new">3 000 F</span>
+      </div>
+      <p class="prix-note">Paiement Mobile Money · Téléchargement immédiat · Accès à vie</p>
+    </div>
+
+    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE VEUX LE GUIDE — 3 000 F<small>Reçu tout de suite après le paiement</small></a>
+    <p class="sous-cta">Fichiers PDF à lire sur ton téléphone et à imprimer.</p>
+
+    <ul class="hero-tags">
+      <li>Sans machine</li>
+      <li>Sans stabilisateur</li>
+      <li>Sans émulsifiant</li>
+      <li>Ingrédients du marché</li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ 2. LE MIROIR ============ -->
+<section class="miroir" aria-labelledby="t-miroir">
+  <div class="blob o" style="width:230px;height:230px;top:-90px;right:-90px"></div>
+  <div class="wrap">
+    <span class="kicker">Tu connais déjà cette histoire</span>
+    <h2 id="t-miroir">La glacière à moitié pleine</h2>
+
+    <div class="recit">
+      <p>Tu fais une première fournée. Elle est réussie. La famille goûte, les voisins goûtent, tout le monde te félicite. On te dit que tu devrais vendre.</p>
+      <p>Alors tu fais une deuxième fournée, plus grande. Tu sors. Tu en vends la moitié.</p>
+      <span class="beat">Le reste fond dans la glacière.</span>
+      <p>Tu recommences une troisième fois. Le soir, tu comptes ce qu'il te reste dans la main, et quelque chose ne va pas : tu as dépensé plus que tu n'as encaissé. Le lait, le sucre, le sachet, la glace du congélateur, le transport — tout ça était sorti de ta poche avant même la première vente.</p>
+      <p>Et tu n'as jamais posé le calcul sur une feuille. Une seule fois.</p>
+      <span class="beat">Alors tu arrêtes.</span>
+      <p>Pas parce que la glace ne se vend pas. Elle se vend, tu le vois tous les jours dans ton quartier. Tu arrêtes parce que personne ne t'a montré la deuxième moitié du travail.</p>
+    </div>
+
+    <ul class="citations">
+      <li>« Je sais que la glace se vend bien, mais je ne sais pas par où commencer. »</li>
+      <li>« J'ai déjà essayé, ça a marché deux fois puis j'ai arrêté. »</li>
+      <li>« À la fin de la journée je n'ai rien mis de côté, je ne sais même pas si j'ai gagné. »</li>
+      <li>« J'ai peur d'acheter les ingrédients et de tout perdre. »</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3. LA BASCULE ============ -->
+<section class="bascule" aria-labelledby="t-bascule">
+  <div class="blob" style="width:150px;height:150px;top:-60px;left:-50px;opacity:.22"></div>
+  <div class="blob pale" style="width:220px;height:220px;bottom:-120px;right:-90px"></div>
+  <div class="wrap">
+    <h2 id="t-bascule" class="pivot">Ce n'est jamais un problème de recette. C'est toujours un problème de <span>chiffres et de terrain</span>.</h2>
+    <p>Savoir cuisiner, tu sais déjà. Ta première fournée l'a prouvé.</p>
+    <p>Ce qui manque, c'est de savoir <strong>combien te coûte réellement un sachet</strong>, <strong>à quel prix le vendre</strong> pour que le travail soit payé, et <strong>où te poser</strong> pour que les gens achètent au lieu de regarder.</p>
+    <p>C'est exactement la moitié du guide que tu tiens en ce moment.</p>
+  </div>
+</section>
+
+<!-- ============ 4. LA TRANSFORMATION ============ -->
+<section aria-labelledby="t-transfo">
+  <div class="blob pale" style="width:280px;height:280px;top:-140px;right:-140px"></div>
+  <div class="wrap">
+    <span class="kicker">Le point d'arrivée</span>
+    <h2 id="t-transfo">Dans 7 jours, tu auras</h2>
+    <ul class="frise">
+      <li><b>Une recette que tu maîtrises</b>Pas dix à moitié. Une, refaite jusqu'à ce qu'elle sorte pareille à chaque fois.</li>
+      <li><b>Un prix validé par de vrais clients</b>Pas un prix copié sur le voisin. Un prix que des gens ont accepté de payer devant toi.</li>
+      <li><b>Ton coût de revient au franc près</b>Écrit sur une fiche, dans ton écriture. Tu sais ce que te coûte un sachet avant de sortir.</li>
+      <li><b>Une première recette encaissée</b>De l'argent qui rentre, compté le soir même, à côté de ce que tu as dépensé.</li>
+      <li><b>La certitude de pouvoir recommencer demain</b>Parce que cette fois, tu as les chiffres. Et les chiffres, ça ne s'oublie pas.</li>
+    </ul>
+    <p class="note">Même si tu n'appliques que la Partie 2, tu sauras enfin si ton activité est rentable. C'est déjà plus que la plupart des vendeurs autour de toi.</p>
+  </div>
+</section>
+
+<!-- ============ 5. CE QUE TU REÇOIS ============ -->
+<section aria-labelledby="t-contenu" style="background:#F3E4C9">
+  <div class="blob" style="width:170px;height:170px;bottom:-80px;left:-60px;opacity:.5"></div>
+  <div class="wrap">
+    <span class="kicker">Le contenu</span>
+    <h2 id="t-contenu">Ce que tu reçois</h2>
+    <p>Un ebook PDF de <strong>38 pages</strong>, en deux parties. La première t'apprend à produire. La seconde t'apprend à gagner.</p>
+
+    <div class="carte">
+      <span class="etiq">Partie 1 — Produire</span>
+      <h3>10 recettes complètes, étape par étape</h3>
+      <ul class="liste">
+        <li><b>5 recettes de base :</b> bouillie custard, farine de blé, maïzena, lait pur, 3 ingrédients.</li>
+        <li><b>1 recette professionnelle :</b> plusieurs centaines de sachets par fournée.</li>
+        <li><b>4 recettes bonus :</b> yaourt dèguè, yaourt maison, lait caillé, chocolat grotto glacé.</li>
+        <li><b>Guide des saveurs et colorants :</b> 10 parfums avec les dosages exacts.</li>
+        <li><b>Liens vidéo de démonstration</b> pour voir les gestes, pas seulement les lire.</li>
+      </ul>
+      <p class="note">Sans machine. Sans stabilisateur. Sans émulsifiant. Avec ce que tu trouves au marché à côté de chez toi.</p>
+    </div>
+
+    <div class="carte mise-avant">
+      <span class="etiq chaud">Partie 2 — Vendre et gagner</span>
+      <h3>C'est ici que se joue la différence</h3>
+      <p>Des recettes de glace, il en circule partout, souvent gratuitement. Ce que personne ne t'explique, c'est ce qui vient après la fournée.</p>
+      <ul class="liste">
+        <li><b>Le calcul de rentabilité complet :</b> les 6 postes de coût que tout le monde oublie, le tableau à remplir, et la règle du ×3 pour fixer ton prix.</li>
+        <li><b>Le kit de démarrage en 3 budgets :</b> tu commences avec ce que tu as, pas avec ce que tu n'as pas.</li>
+        <li><b>SOS — 12 problèmes de fabrication :</b> ça n'a pas pris, c'est trop dur, c'est granuleux… la cause et la solution, à chaque fois.</li>
+        <li><b>Tes 30 premiers clients :</b> 6 terrains concrets, avec les horaires et le format de vente qui va avec chacun.</li>
+      </ul>
+      <p class="note"><strong>Honnête :</strong> le guide ne te donne pas de montants tout calculés — les prix bougent d'un marché à l'autre et d'un mois à l'autre. Il te donne la méthode et les tableaux à remplir avec <em>tes</em> prix, ceux de ton quartier.</p>
+    </div>
+
+    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE PRENDS LE GUIDE — 3 000 F<small>38 pages + 2 bonus imprimables</small></a>
+  </div>
+</section>
+
+<!-- ============ 6. LES BONUS ============ -->
+<section class="bonus" aria-labelledby="t-bonus">
+  <div class="blob o" style="width:240px;height:240px;top:-110px;left:-90px"></div>
+  <div class="wrap">
+    <span class="kicker" style="background:var(--brun);color:var(--jaune)">Offerts avec le guide</span>
+    <h2 id="t-bonus">Les 2 bonus</h2>
+    <p style="color:var(--brun);max-width:44ch">Ce sont eux que tu vas utiliser le plus. Ils s'impriment, se remplissent au stylo, et se refont à chaque fournée.</p>
+
+    <div class="carte-bonus">
+      <h3>Bonus 1 — La Calculatrice de Profit</h3>
+      <p><strong>3 fiches A4 à imprimer.</strong> Coût de revient, prix de vente, seuil de rentabilité, bilan de soirée. Tu remplis au stylo en 3 minutes, et tu sais où tu en es. Plus jamais « je crois que j'ai gagné ».</p>
+      <span class="valeur">Valeur 4 000 F</span><span class="offert">→ offert</span>
+    </div>
+
+    <div class="carte-bonus">
+      <h3>Bonus 2 — Le Plan de Lancement 7 Jours</h3>
+      <p><strong>Un programme à cocher, jour par jour.</strong> J1 les courses → J2 la fournée test → J3 la dégustation des 10 → J4 le prix → J5 la production → J6 la vente → J7 le bilan chiffré. Tu ne te demandes jamais quoi faire aujourd'hui : c'est écrit.</p>
+      <span class="valeur">Valeur 5 000 F</span><span class="offert">→ offert</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. POUR TOI / PAS POUR TOI ============ -->
+<section aria-labelledby="t-pour">
+  <div class="wrap">
+    <span class="kicker">Franchement</span>
+    <h2 id="t-pour">Ceci est pour toi. Ou pas.</h2>
+    <p>Autant le dire avant que tu paies : ce guide ne convient pas à tout le monde.</p>
+
+    <div class="duo">
+      <div class="col oui">
+        <h3>C'est pour toi si…</h3>
+        <ul class="check">
+          <li>Tu veux une activité complémentaire que tu peux démarrer depuis ta cuisine.</li>
+          <li>Tu as déjà essayé la glace et ça s'est arrêté sans que tu saches pourquoi.</li>
+          <li>Tu es prêt à sortir vendre toi-même, au moins au début.</li>
+          <li>Tu acceptes de poser des chiffres sur une feuille, même si tu n'aimes pas ça.</li>
+          <li>Tu as un petit budget de départ et tu ne veux pas le perdre bêtement.</li>
+        </ul>
+      </div>
+      <div class="col non">
+        <h3>Ce n'est pas pour toi si…</h3>
+        <ul class="cross">
+          <li>Tu cherches de l'argent sans travailler.</li>
+          <li>Tu ne comptes pas sortir vendre toi-même, ni faire vendre par quelqu'un.</li>
+          <li>Tu veux un montant de gain garanti à l'avance : personne ne peut te le donner honnêtement.</li>
+          <li>Tu veux juste des recettes gratuites — tu en trouveras sur internet, et tu resteras bloqué au même endroit.</li>
+          <li>Tu n'as pas 7 jours à y consacrer dans les prochaines semaines.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TÉMOIGNAGES ============
+     Captures réelles. Numéros et noms masqués.
+     Pour en ajouter : dupliquer un bloc .preuve et poser le fichier à côté du HTML. -->
+<section class="preuves" aria-labelledby="t-preuves">
+  <div class="blob pale" style="width:250px;height:250px;top:-120px;right:-110px"></div>
+  <div class="wrap">
+    <span class="kicker">Après l'achat</span>
+    <h2 id="t-preuves">Ce que des acheteurs ont écrit</h2>
+    <p style="max-width:44ch">Deux échanges WhatsApp reçus après la livraison du guide. Les numéros et les noms ont été masqués — le reste est tel quel, y compris la question qui coince.</p>
+
+    <div class="duo-preuves">
+      <figure class="preuve">
+        <img src="temoignage-1.webp" width="480" height="484" loading="lazy" decoding="async"
+             alt="Capture WhatsApp : une acheteuse envoie la vidéo de sa glace réussie, demande pourquoi elle fond vite, et reçoit la réponse sur le dosage et le temps de congélation">
+        <figcaption>Sa fournée est réussie. Elle fond trop vite. Elle pose la question, elle a la réponse le matin même.</figcaption>
+      </figure>
+
+      <figure class="preuve">
+        <img src="temoignage-2.webp" width="480" height="429" loading="lazy" decoding="async"
+             alt="Capture WhatsApp : un acheteur écrit que c'est le troisième ebook qu'il achète et qu'il n'a jamais eu un suivi aussi rapide">
+        <figcaption>« C'est la 3<sup>e</sup> fois que j'achète un e-book, mais je n'ai jamais eu un suivi aussi rapide. »</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. VALEUR & PRIX ============ -->
+<section class="valeurs" aria-labelledby="t-prix">
+  <div class="blob" style="width:200px;height:200px;top:-90px;right:-80px;opacity:.28"></div>
+  <div class="wrap">
+    <span class="kicker">Le prix</span>
+    <h2 id="t-prix">Ce que ça vaut, ce que tu paies</h2>
+
+    <img class="banniere" src="glace-business-702.webp" width="702" height="260" loading="lazy" decoding="async"
+         alt="Bannière GLACE BUSINESS : l'assortiment complet de glaces artisanales et la mention des bonus inclus">
+
+    <p class="chrono" data-chrono>
+      <span class="chrono-lab">Le prix de 3 000 F se termine à minuit</span>
+      <span class="chrono-time" aria-hidden="true" hidden><b data-h>00</b><i>h</i><b data-m>00</b><i>m</i><b data-s>00</b><i>s</i></span>
+    </p>
+
+    <table class="tableau">
+      <caption>Détail de l'offre complète</caption>
+      <tbody>
+        <tr><th scope="row">Ebook GLACE BUSINESS — 38 pages</th><td>9 000 F</td></tr>
+        <tr><th scope="row">Bonus 1 — La Calculatrice de Profit</th><td>4 000 F</td></tr>
+        <tr><th scope="row">Bonus 2 — Le Plan de Lancement 7 Jours</th><td>5 000 F</td></tr>
+        <tr class="total"><th scope="row">VALEUR TOTALE</th><td>18 000 F</td></tr>
+        <tr class="today"><th scope="row">AUJOURD'HUI</th><td>3 000 F</td></tr>
+      </tbody>
+    </table>
+
+    <p class="perspective">3 000 F, c'est le prix de quelques ingrédients au marché. Sauf que les ingrédients, tu les manges une fois. La méthode, tu la réutilises à chaque fournée, toute l'année.</p>
+    <p class="perspective">Une petite série de sachets vendus, et le guide est remboursé. Le reste, c'est ton travail — et c'est toi qui fixes le prix, avec ta propre fiche de coûts.</p>
+
+    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">J'ACHÈTE MAINTENANT — 3 000 F<small>Paiement Mobile Money · Accès immédiat</small></a>
+  </div>
+</section>
+
+<!-- ============ 9. FAQ ============ -->
+<section class="faq" aria-labelledby="t-faq">
+  <div class="blob pale" style="width:260px;height:260px;bottom:-140px;left:-120px"></div>
+  <div class="wrap">
+    <span class="kicker">Tes questions</span>
+    <h2 id="t-faq">Ce que les gens demandent avant d'acheter</h2>
+
+    <details>
+      <summary>Je n'ai jamais fait de glace, c'est trop compliqué pour moi ?</summary>
+      <div class="rep"><p>Non. Les 5 recettes de base sont écrites étape par étape, avec les quantités et les temps. La recette « 3 ingrédients » est faite exactement pour une première fois. Et des liens vidéo te montrent les gestes quand un mot ne suffit pas.</p></div>
+    </details>
+
+    <details>
+      <summary>Il me faut une machine ?</summary>
+      <div class="rep"><p>Non. Toutes les recettes sont conçues sans machine, sans stabilisateur et sans émulsifiant. Il te faut un congélateur, des casseroles et des sachets. Le kit de démarrage en 3 budgets te dit précisément quoi acheter selon ce que tu as.</p></div>
+    </details>
+
+    <details>
+      <summary>Je trouve les ingrédients où ?</summary>
+      <div class="rep"><p>Au marché de ton quartier et en boutique. Le guide travaille avec les ingrédients disponibles localement — lait, sucre, farine, maïzena, arômes et colorants courants. Le guide des saveurs te donne les dosages exacts pour 10 parfums.</p></div>
+    </details>
+
+    <details>
+      <summary>Je reçois comment après le paiement ?</summary>
+      <div class="rep"><p>Immédiatement. Dès que le paiement est validé, tu reçois le lien de téléchargement. Tu gardes les fichiers PDF sur ton téléphone, tu les lis hors connexion, et tu imprimes les 2 bonus quand tu veux. Accès à vie.</p></div>
+    </details>
+
+    <details>
+      <summary>Et si je n'arrive pas à vendre ?</summary>
+      <div class="rep"><p>C'est précisément le problème que traite la Partie 2. Tu y trouves 6 terrains concrets, avec les horaires et le format de vente adapté à chacun, plus la méthode pour tester ton prix sur de vrais clients avant de produire en grande quantité. Aucun guide ne peut te garantir des ventes — ce que celui-ci te donne, c'est un plan à suivre et de quoi savoir, chiffres en main, ce qui marche et ce qui ne marche pas.</p></div>
+    </details>
+
+    <details>
+      <summary>Je peux payer avec Mobile Money ?</summary>
+      <div class="rep"><p>Oui : Wave, Orange Money, MTN Money et Moov Money. Le paiement se fait depuis ton téléphone, en quelques secondes.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 10. RÉDUCTION DU RISQUE ============ -->
+<section class="rassure" aria-labelledby="t-risque">
+  <div class="blob" style="width:180px;height:180px;top:-80px;right:-70px;opacity:.25"></div>
+  <div class="wrap">
+    <span class="kicker inv">Avant de cliquer</span>
+    <h2 id="t-risque">Ce qui est prévu pour toi</h2>
+    <div class="grille">
+      <div class="item"><b>Livraison instantanée</b><span>Le lien arrive dès la validation du paiement. Pas d'attente, pas de livreur.</span></div>
+      <div class="item"><b>Paiement Mobile Money</b><span>Depuis ton téléphone, avec le compte que tu utilises déjà.</span></div>
+      <div class="item"><b>Accès à vie</b><span>Les fichiers sont à toi. Tu les gardes, tu les relis quand tu veux.</span></div>
+      <div class="item"><b>Téléchargeable et imprimable</b><span>Lisible hors connexion sur Android. Les fiches bonus s'impriment en A4.</span></div>
+    </div>
+    <ul class="momo">
+      <li>Wave</li><li>Orange Money</li><li>MTN Money</li><li>Moov Money</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 11. CTA FINAL ============ -->
+<section class="cloture" aria-labelledby="t-fin">
+  <div class="blob" style="width:220px;height:220px;top:-100px;left:-90px;opacity:.3"></div>
+  <div class="blob pale" style="width:300px;height:300px;bottom:-160px;right:-130px"></div>
+  <div class="wrap">
+    <span class="kicker">Dernière chose</span>
+    <h2 id="t-fin">Tu sais déjà cuisiner. Il te manque les chiffres.</h2>
+    <p class="solo">Fais ta première fournée ce soir. Demain matin, tu peux déjà avoir quelque chose à vendre.</p>
+
+    <div class="visuel">
+      <img src="glace-business-600.webp" width="600" height="600" loading="lazy" decoding="async"
+           alt="Les parfums de glace artisanale que tu apprends à produire avec le guide">
+    </div>
+
+    <div class="prix-bloc">
+      <div class="prix-ligne">
+        <span class="prix-old">18 000 F</span>
+        <span class="prix-new">3 000 F</span>
+      </div>
+      <p class="prix-note">Ebook 38 pages + Calculatrice de Profit + Plan 7 Jours</p>
+    </div>
+
+    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE COMMENCE CE SOIR — 3 000 F<small>Téléchargement immédiat · Accès à vie</small></a>
+    <p class="sous-cta" style="opacity:.95">Paiement Wave, Orange Money, MTN, Moov.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>GLACE BUSINESS</strong> — Guide de fabrication et de vente de glaces artisanales.</p>
+    <p>Ce guide transmet une méthode de production et de gestion. Les résultats dépendent de ton travail, de ton marché et de ton application. Aucun revenu n'est promis ni garanti.</p>
+  </div>
+</footer>
+
+<!-- Barre collante : compte à rebours + prix + CTA. Visible sur toute la page. -->
+<div class="barre" role="region" aria-label="Offre du jour et achat rapide">
+  <p class="chrono chrono--barre" data-chrono>
+    <span class="chrono-lab">Prix du jour · fin à minuit</span>
+    <span class="chrono-time" aria-hidden="true" hidden><b data-h>00</b><i>h</i><b data-m>00</b><i>m</i><b data-s>00</b><i>s</i></span>
+  </p>
+  <div class="barre-row">
+    <div class="info"><b>3 000 F</b><span>18 000 F</span></div>
+    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">J'ACHÈTE</a>
+  </div>
+</div>
+
+<script>
+/* Fond vidéo du hero : 1,3 Mo, soit dix fois le reste de la page. On ne le
+   télécharge que si la connexion le permet. Sinon l'aplat orange suffit. */
+(function(){
+  var v=document.getElementById('fond-video');
+  if(!v)return;
+  var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection||{};
+  var reseauLent=c.saveData===true||/2g|3g/.test(c.effectiveType||'');
+  var animReduite=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reseauLent||animReduite)return;
+  /* Le hero fait toute la largeur : sur grand écran, du 640x360 étiré bavait.
+     Le mobile — 90 % du trafic, et celui qui paie sa data — garde la version légère. */
+  v.src=innerWidth>900?v.dataset.srcHd:v.dataset.src;
+  var p=v.play();
+  if(p&&p.catch)p.catch(function(){});
+})();
+
+/* Tant que le hero est à l'écran, on ne garde que le bandeau du compteur.
+   Sans JS, la barre complète reste affichée : dégradation sans perte de CTA. */
+(function(){
+  var barre=document.querySelector('.barre'),hero=document.querySelector('.hero');
+  if(!barre||!hero||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(e){
+    barre.classList.toggle('compact',e[0].isIntersecting);
+  },{rootMargin:'-40px 0px 0px 0px'}).observe(hero);
+})();
+
+/* Compte à rebours : temps restant jusqu'à minuit (heure locale du visiteur).
+   Même échéance pour tout le monde, aucun stockage, aucun redémarrage au rafraîchissement.
+   L'offre doit réellement changer à minuit — sinon retirer ces blocs. */
+(function(){
+  var blocs=document.querySelectorAll('[data-chrono]');
+  if(!blocs.length)return;
+  var pad=function(n){return n<10?'0'+n:''+n};
+  function tick(){
+    var now=new Date();
+    var minuit=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,0,0);
+    var reste=Math.max(0,Math.floor((minuit-now)/1000));
+    var h=pad(Math.floor(reste/3600)),m=pad(Math.floor(reste%3600/60)),s=pad(reste%60);
+    for(var i=0;i<blocs.length;i++){
+      var t=blocs[i].querySelector('.chrono-time');
+      if(t.hidden)t.hidden=false;
+      t.querySelector('[data-h]').textContent=h;
+      t.querySelector('[data-m]').textContent=m;
+      t.querySelector('[data-s]').textContent=s;
+    }
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+</script>

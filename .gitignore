@@ -1,0 +1,15 @@
+# Sources de travail : volumineuses, ou contenant des données personnelles.
+# Elles restent sur le disque local, elles ne partent pas sur le dépôt distant.
+
+# Vidéo source (27,9 Mo, HEVC). Les rendus web glace-fond*.mp4 en dérivent.
+0811.mp4
+
+# Captures WhatsApp brutes. Le masquage des numéros et des noms n'a été appliqué
+# qu'aux dérivés temoignage-*.webp — ces originaux montrent encore un nom de
+# profil et une partie d'un numéro de téléphone.
+*.avif
+
+# Doublons superseded par les .webp et les versions renommées
+glace-business-600.jpg
+glace_business_600_600_under2mb*.jpg
+glace_business_702_260_under2mb*.jpg
