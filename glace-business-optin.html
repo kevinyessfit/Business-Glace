@@ -202,6 +202,27 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
 .reassure li.compteur{grid-column:1 / -1;background:var(--jaune);color:var(--brun);border-color:var(--brun)}
 .reassure li.compteur b{color:var(--brun)}
 
+/* ---- PREUVE EN TETE DU HERO ----
+   Un verbatim reel, place avant tout argument : sur ce marche le prospect
+   cherche d'abord si quelqu'un d'autre a paye et recu. Panneau opaque comme
+   .hero-texte, parce que la video passe derriere. */
+.preuve-hero{
+  position:relative;z-index:2;margin:0 0 14px;padding:15px 16px;
+  background:rgba(58,33,19,.82);border:1px solid rgba(255,212,0,.45);
+  border-radius:var(--r-m);text-align:left;
+}
+.preuve-hero blockquote{
+  margin:0 0 8px;font-family:var(--titre);font-weight:700;
+  font-size:clamp(15.5px,4vw,18px);line-height:1.42;color:#FFF3CF;
+}
+.preuve-hero figcaption{font-size:13px;color:#E8D6BC;line-height:1.4}
+/* Lien sur sa propre ligne : en fin de phrase il ne faisait que 15 px de
+   haut, sous le plancher de 44 px d'une zone tactile au pouce. */
+.preuve-hero figcaption a{
+  display:inline-block;color:var(--jaune);font-weight:700;
+  margin:4px 0 0;padding:12px 2px;min-height:48px;box-sizing:border-box;
+}
+
 .visuel{
   background:var(--creme);border-radius:var(--r-l);padding:8px;
   box-shadow:0 14px 30px rgba(58,33,19,.3);margin:0 auto 24px;max-width:340px;
@@ -552,6 +573,18 @@ footer p{margin:0 0 .5em}
       <p class="promesse">10 recettes, et surtout la méthode pour savoir, chiffres en main, si tu gagnes de l'argent.</p>
     </div>
 
+    <!-- PREUVE EN TÊTE — verbatim RÉEL, recopié mot pour mot d'un message reçu
+         après un achat. La capture correspondante est reproduite plus bas.
+         RÈGLE : rien ne s'écrit ici qui n'existe pas dans un message que tu as
+         réellement reçu. Un faux témoignage — même plausible, même avec un
+         prénom et une ville crédibles — est ce qui coûte le plus cher sur ce
+         marché : il se repère, il se raconte, et il emporte avec lui la
+         crédibilité de tout le reste de la page. -->
+    <figure class="preuve-hero">
+      <blockquote>« C'est la 3<sup>e</sup> fois que j'achète un e-book, mais je n'ai jamais eu un suivi aussi rapide. »</blockquote>
+      <figcaption>Message WhatsApp d'un acheteur, nom masqué.<br><a href="#t-preuves">Voir la capture →</a></figcaption>
+    </figure>
+
     <!-- Réassurance immédiate : uniquement des faits vérifiables dans le produit. -->
     <ul class="reassure">
       <li><b>38</b>pages</li>
@@ -783,7 +816,26 @@ footer p{margin:0 0 .5em}
 
       <!-- TÉMOIGNAGES : à remplir avec de vrais retours clients.
            Dupliquer le bloc <figure class="preuve"> ci-dessus, poser la capture
-           à côté du HTML, masquer numéro et nom, et écrire une légende factuelle. -->
+           à côté du HTML, masquer numéro et nom, et écrire une légende factuelle.
+
+           CINQ RETOURS À ALLER CHERCHER — ce sont les cinq angles qui portent le
+           plus. N'écris rien ici : pose la question aux acheteurs, attends la
+           réponse, et colle ce qu'ils ont vraiment répondu.
+
+           1. LE SCEPTIQUE CONVERTI. Demande : « qu'est-ce qui t'a fait douter
+              avant d'acheter, et qu'est-ce qui a changé d'avis ? »
+           2. LE DÉBUTANT TOTAL. Demande : « tu avais déjà fait de la glace
+              avant ? Ta première fournée, ça a donné quoi ? »
+           3. LE VENDEUR DÉJÀ EN ACTIVITÉ. Demande : « qu'est-ce que tu as
+              découvert sur tes chiffres que tu ne savais pas ? »
+           4. LE DÉTAIL INATTENDU. Demande : « qu'est-ce qui t'a servi et que tu
+              n'attendais pas en achetant ? »
+           5. LA PHRASE COURTE, pour le haut de page. Demande : « en une phrase,
+              tu dirais quoi à quelqu'un qui hésite ? »
+
+           Quand tu en as un : capture d'écran, numéro et nom masqués, et le
+           verbatim recopié tel quel — fautes comprises, elles font vrai parce
+           qu'elles le sont. Le meilleur des cinq remplace la citation du hero. -->
     </div>
   </div>
 </section>
