@@ -219,12 +219,22 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
    ligne de flottaison, six temoignages empiles repoussent le prix et le bouton
    hors de l'ecran. En piste, le lecteur en lit un, voit la carte suivante
    depasser, et sait qu'il y en a d'autres sans avoir a defiler la page. */
-.preuves-hero{position:relative;z-index:2;margin:0 0 14px}
+.preuves-hero{position:relative;z-index:2;margin:0 0 16px}
+/* Le compteur passe avant le titre : c'est le premier objet de la page, donc
+   il est dimensionne comme un titre et pas comme une etiquette. Le nombre part
+   sur sa propre ligne, plus gros que le texte qui le qualifie. */
 .compteur-social{
-  display:block;margin:0 0 9px;padding:9px 12px;
-  background:var(--jaune);color:var(--brun);border-radius:99px;
-  font-family:var(--titre);font-weight:800;font-size:15px;
-  line-height:1.25;text-align:center;
+  display:block;margin:0 0 10px;padding:12px 14px;
+  background:var(--jaune);color:var(--brun);
+  border:2px solid var(--brun);border-radius:var(--r-m);
+  font-family:var(--titre);font-weight:800;
+  font-size:clamp(15px,4.2vw,18px);line-height:1.2;
+  text-align:center;text-transform:uppercase;letter-spacing:.02em;
+  box-shadow:0 8px 20px rgba(58,33,19,.28);
+}
+.compteur-social b{
+  display:block;font-size:clamp(34px,10vw,46px);font-weight:800;
+  line-height:1;margin:0 0 3px;letter-spacing:-.01em;
 }
 .preuves-hero .piste{
   display:flex;gap:10px;margin:0;padding:0 0 8px;list-style:none;
@@ -547,14 +557,9 @@ footer p{margin:0 0 .5em}
   <div class="blob" style="width:190px;height:190px;top:-70px;right:-70px;opacity:.35"></div>
   <div class="blob pale" style="width:260px;height:260px;bottom:-130px;left:-110px"></div>
   <div class="wrap">
-    <div class="hero-texte">
-      <span class="kicker inv">Ebook PDF + 5 bonus</span>
-      <h1>GLACE BUSINESS<em>De ta cuisine à ton premier argent encaissé en 7 jours</em></h1>
-      <p class="objection">Même si tu n'as <b>jamais fait de glace de ta vie</b> : sans machine, sans stabilisateur, avec les ingrédients de ton marché — et un budget de départ à ta portée.</p>
-      <p class="promesse">10 recettes, et surtout la méthode pour savoir, chiffres en main, si tu gagnes de l'argent.</p>
-    </div>
-
-    <!-- PREUVES EN TÊTE — verbatims d'acheteurs, placés avant tout argument.
+    <!-- PREUVES EN TÊTE — avant le titre, avant qu'on parle du produit. Le
+         lecteur voit d'abord que d'autres ont payé et s'en servent ; ensuite
+         seulement il apprend ce que c'est.
          L'ordre n'est pas l'ordre d'arrivée : sceptique converti d'abord (c'est
          l'objection du lecteur), débutant total ensuite (c'est sa peur), puis
          les chiffres, la saveur signature, et la phrase courte pour finir.
@@ -566,7 +571,7 @@ footer p{margin:0 0 .5em}
          crédibilité de tout le reste de la page. Même règle pour le compteur
          ci-dessous : le jour où le chiffre réel dépasse 237, mets le vrai. -->
     <div class="preuves-hero">
-      <span class="compteur-social">+237 commerçants satisfaits</span>
+      <span class="compteur-social"><b>+237</b> commerçants satisfaits</span>
       <ul class="piste">
         <li>
           <figure class="preuve-hero">
@@ -606,6 +611,13 @@ footer p{margin:0 0 .5em}
         </li>
       </ul>
       <p class="aide">Glisse pour lire les autres →</p>
+    </div>
+
+    <div class="hero-texte">
+      <span class="kicker inv">Ebook PDF + 5 bonus</span>
+      <h1>GLACE BUSINESS<em>De ta cuisine à ton premier argent encaissé en 7 jours</em></h1>
+      <p class="objection">Même si tu n'as <b>jamais fait de glace de ta vie</b> : sans machine, sans stabilisateur, avec les ingrédients de ton marché — et un budget de départ à ta portée.</p>
+      <p class="promesse">10 recettes, et surtout la méthode pour savoir, chiffres en main, si tu gagnes de l'argent.</p>
     </div>
 
     <!-- Réassurance immédiate : uniquement des faits vérifiables dans le produit. -->
