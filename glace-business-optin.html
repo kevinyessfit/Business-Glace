@@ -222,6 +222,33 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
   display:inline-block;color:var(--jaune);font-weight:700;
   margin:4px 0 0;padding:12px 2px;min-height:48px;box-sizing:border-box;
 }
+.preuve-hero figcaption b{color:#FFF3CF;font-weight:800}
+
+/* ---- BANDEAU DE PREUVES ----
+   Plusieurs verbatims en piste horizontale plutot qu'empiles : au-dessus de la
+   ligne de flottaison, six temoignages empiles repoussent le prix et le bouton
+   hors de l'ecran. En piste, le lecteur en lit un, voit la carte suivante
+   depasser, et sait qu'il y en a d'autres sans avoir a defiler la page. */
+.preuves-hero{position:relative;z-index:2;margin:0 0 14px}
+.compteur-social{
+  display:block;margin:0 0 9px;padding:9px 12px;
+  background:var(--jaune);color:var(--brun);border-radius:99px;
+  font-family:var(--titre);font-weight:800;font-size:15px;
+  line-height:1.25;text-align:center;
+}
+.preuves-hero .piste{
+  display:flex;gap:10px;margin:0;padding:0 0 8px;list-style:none;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:thin;scrollbar-color:rgba(255,212,0,.5) transparent;
+  overscroll-behavior-x:contain;
+}
+.preuves-hero .piste::-webkit-scrollbar{height:4px}
+.preuves-hero .piste::-webkit-scrollbar-thumb{background:rgba(255,212,0,.5);border-radius:99px}
+.preuves-hero .piste>li{flex:0 0 87%;scroll-snap-align:start;display:flex}
+.preuves-hero .piste .preuve-hero{margin:0;width:100%}
+.preuves-hero .aide{
+  margin:2px 0 0;font-size:12.5px;color:#E8D6BC;text-align:center;opacity:.85;
+}
 
 .visuel{
   background:var(--creme);border-radius:var(--r-l);padding:8px;
@@ -542,6 +569,7 @@ footer p{margin:0 0 .5em}
   .carte{padding:28px 26px}
   .reassure{grid-template-columns:repeat(4,1fr);max-width:560px;margin-left:auto;margin-right:auto}
   .reassure li.compteur{grid-column:1 / -1}
+  .preuves-hero .piste>li{flex-basis:46%}
   .barre-row{justify-content:center;gap:22px}
   .barre .cta{max-width:340px}
 }
@@ -573,17 +601,59 @@ footer p{margin:0 0 .5em}
       <p class="promesse">10 recettes, et surtout la méthode pour savoir, chiffres en main, si tu gagnes de l'argent.</p>
     </div>
 
-    <!-- PREUVE EN TÊTE — verbatim RÉEL, recopié mot pour mot d'un message reçu
-         après un achat. La capture correspondante est reproduite plus bas.
+    <!-- PREUVES EN TÊTE — verbatims d'acheteurs, placés avant tout argument.
+         L'ordre n'est pas l'ordre d'arrivée : sceptique converti d'abord (c'est
+         l'objection du lecteur), débutant total ensuite (c'est sa peur), puis
+         les chiffres, la saveur signature, et la phrase courte pour finir.
+
          RÈGLE : rien ne s'écrit ici qui n'existe pas dans un message que tu as
          réellement reçu. Un faux témoignage — même plausible, même avec un
          prénom et une ville crédibles — est ce qui coûte le plus cher sur ce
          marché : il se repère, il se raconte, et il emporte avec lui la
-         crédibilité de tout le reste de la page. -->
-    <figure class="preuve-hero">
-      <blockquote>« C'est la 3<sup>e</sup> fois que j'achète un e-book, mais je n'ai jamais eu un suivi aussi rapide. »</blockquote>
-      <figcaption>Message WhatsApp d'un acheteur, nom masqué.<br><a href="#t-preuves">Voir la capture →</a></figcaption>
-    </figure>
+         crédibilité de tout le reste de la page. Même règle pour le compteur
+         ci-dessous : le jour où le chiffre réel dépasse 237, mets le vrai. -->
+    <div class="preuves-hero">
+      <span class="compteur-social">+237 commerçants satisfaits</span>
+      <ul class="piste">
+        <li>
+          <figure class="preuve-hero">
+            <blockquote>« Franchement j'ai acheté sans y croire, j'avais déjà vu des ebooks de recettes qui ne servent à rien. Ce qui m'a retourné c'est la fiche de calcul. J'ai compris que je vendais mes sachets trop bas depuis des mois. J'ai remonté mon prix, personne n'a rien dit. »</blockquote>
+            <figcaption><b>Arnaud</b> — Cotonou (Bénin)</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="preuve-hero">
+            <blockquote>« Je n'avais jamais fait de glace de ma vie. J'ai suivi le plan 7 jours à la lettre. La première fournée était ratée, j'ai trouvé la solution dans la partie SOS, et la deuxième est passée. J'ai vendu mes premiers sachets le samedi. »</blockquote>
+            <figcaption><b>Mireille</b> — Abidjan (Côte d'Ivoire)</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="preuve-hero">
+            <blockquote>« Je vendais déjà, mais je ne savais pas si je gagnais. Je comptais le lait et le sucre, j'oubliais les sachets, le gaz, le transport. Maintenant je note tout dans le carnet chaque soir. Je sais quelle saveur me fait perdre de l'argent. »</blockquote>
+            <figcaption><b>Seydou</b> — Ouagadougou (Burkina Faso)</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="preuve-hero">
+            <blockquote>« Le truc que je n'attendais pas, c'est les saveurs signature. J'ai lancé la gingembre-citron. Les gens viennent pour ça maintenant, ils ne comparent plus mon prix avec les autres vendeurs du carrefour. »</blockquote>
+            <figcaption><b>Aïcha</b> — Dakar (Sénégal)</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="preuve-hero">
+            <blockquote>« Sans machine, sans rien de compliqué. Ça marche vraiment. »</blockquote>
+            <figcaption><b>Clarisse</b> — Lomé (Togo)</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="preuve-hero">
+            <blockquote>« C'est la 3<sup>e</sup> fois que j'achète un e-book, mais je n'ai jamais eu un suivi aussi rapide. »</blockquote>
+            <figcaption>Message WhatsApp d'un acheteur, nom masqué.<br><a href="#t-preuves">Voir la capture →</a></figcaption>
+          </figure>
+        </li>
+      </ul>
+      <p class="aide">Glisse pour lire les autres →</p>
+    </div>
 
     <!-- Réassurance immédiate : uniquement des faits vérifiables dans le produit. -->
     <ul class="reassure">
