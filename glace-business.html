@@ -428,13 +428,22 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
 footer{background:var(--brun);color:#D9C7B2;font-size:13.5px;text-align:center;padding:26px 0 34px}
 footer p{margin:0 0 .5em}
 
-/* ---- BARRE COLLANTE ---- */
+/* ---- BARRE COLLANTE ----
+   Elle monte 5 s apres l'ouverture, pas avant. Le premier ecran garde son
+   bouton d'achat : celui du hero. La barre est la relance, pas l'accueil.
+   Anime en CSS et non en JS : sans script la barre apparait quand meme, et
+   translateY ne declenche ni recalcul de mise en page ni repaint. */
 .barre{
   position:fixed;left:0;right:0;bottom:0;z-index:50;
   padding:0 14px calc(10px + env(safe-area-inset-bottom));
   background:var(--navy);border-top:3px solid var(--jaune);
-  transition:transform .25s ease;will-change:transform;
+  transform:translateY(100%);visibility:hidden;will-change:transform;
+  animation:barre-monte .32s ease 5s forwards;
 }
+/* visibility passe a visible des le premier pas de l'animation : tant que la
+   barre est en bas de l'ecran, son bouton n'est ni cliquable ni atteignable
+   au clavier. */
+@keyframes barre-monte{to{transform:translateY(0);visibility:visible}}
 .barre-row{display:flex;align-items:center;gap:12px;padding-top:10px}
 .sans-chrono .barre-row{padding-top:12px}
 .barre .info{line-height:1.15;flex:0 0 auto}
@@ -468,6 +477,11 @@ footer p{margin:0 0 .5em}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
+  /* La regle ci-dessus couperait aussi l'animation qui fait apparaitre la
+     barre : elle resterait invisible pour toujours. On la conserve donc, mais
+     reduite a une bascule instantanee — le delai de 5 s reste, le mouvement
+     disparait. */
+  .barre{animation:barre-monte .001s linear 5s forwards!important}
 }
 </style>
 
