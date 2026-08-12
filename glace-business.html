@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GLACE BUSINESS — De ta cuisine à ton premier argent encaissé en 7 jours</title>
-<meta name="description" content="10 recettes de glaces artisanales sans machine + la méthode pour calculer ton coût, fixer ton prix et trouver tes 30 premiers clients. Ebook PDF 38 pages + 2 bonus imprimables. 3 000 FCFA.">
+<meta name="description" content="10 recettes de glaces artisanales sans machine + la méthode pour calculer ton coût, fixer ton prix et trouver tes 30 premiers clients. Ebook PDF 38 pages + 5 bonus imprimables. 5 000 FCFA.">
 <meta name="theme-color" content="#C43F18">
 <!-- Favicon en SVG inline : évite une requête et le 404 sur /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23C43F18'/%3E%3Ccircle cx='16' cy='12.5' r='7' fill='%23FFD400'/%3E%3Cpath d='M9.5 15.5h13L16 28z' fill='%23FBF0DC'/%3E%3C/svg%3E">
@@ -17,7 +17,7 @@
 <meta property="og:type" content="product">
 <meta property="og:url" content="https://businessglace.netlify.app/">
 <meta property="og:title" content="GLACE BUSINESS — De ta cuisine à ton premier argent encaissé en 7 jours">
-<meta property="og:description" content="Même si tu n'as jamais fait de glace : sans machine, avec les ingrédients de ton marché. 38 pages + 2 bonus imprimables — 3 000 FCFA.">
+<meta property="og:description" content="Même si tu n'as jamais fait de glace : sans machine, avec les ingrédients de ton marché. 38 pages + 5 bonus imprimables — 5 000 FCFA.">
 <meta property="og:image" content="https://businessglace.netlify.app/glace-business-702.jpg">
 <meta property="og:image:alt" content="L'assortiment de glaces artisanales du guide GLACE BUSINESS">
 <meta property="og:image:width" content="702">
@@ -279,10 +279,22 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
 .bonus{background:var(--jaune)}
 .bonus h2{color:var(--brun)}
 .carte-bonus{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:22px 18px;margin:0 0 16px}
+/* Colonne : la pastille de valeur se cale en bas, donc les deux cartes d'une
+   meme rangee alignent leur prix meme si leurs textes sont de longueurs differentes. */
+.carte-bonus{display:flex;flex-direction:column}
+.carte-bonus p{flex:1 0 auto}
 .carte-bonus h3{color:var(--jaune);margin-bottom:.35em}
 .carte-bonus p{color:#E6E6F5;margin-bottom:.7em}
 .valeur{display:inline-block;font-family:var(--titre);font-weight:800;font-size:15px;background:var(--orange);color:#fff;padding:6px 13px;border-radius:99px}
 .offert{font-family:var(--titre);font-weight:800;font-size:15px;color:var(--jaune);margin-left:8px}
+.bonus-grille{display:grid;gap:16px;margin:0 0 4px}
+.bonus-grille .carte-bonus{margin:0}
+@media (min-width:600px){
+  /* Cinq cartes empilees font un mur sur grand ecran. En deux colonnes, la
+     derniere prend toute la largeur plutot que de laisser un trou a droite. */
+  .bonus-grille{grid-template-columns:1fr 1fr}
+  .bonus-grille .carte-bonus:last-child{grid-column:1 / -1}
+}
 .bonus .cta{margin-top:22px}
 
 /* ---- POUR / PAS POUR ---- */
@@ -373,7 +385,7 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
 .banniere{width:100%;border-radius:var(--r-m);margin:0 0 20px;background:var(--navy)}
 
 /* ---- POURQUOI CE PRIX ----
-   Bloc à la première personne. Quand le lecteur voit 18 000 F barrés et 3 000 F
+   Bloc à la première personne. Quand le lecteur voit 35 000 F barrés et 5 000 F
    affichés, sa réaction n'est pas « bonne affaire » mais « où est le piège ».
    Sans réponse ici, il quitte la page. */
 .pourquoi{
@@ -438,7 +450,7 @@ footer p{margin:0 0 .5em}
   display:inline-flex;align-items:center;gap:7px;vertical-align:middle;
   background:#25D366;color:#06301A;text-decoration:none;
   font-family:var(--titre);font-weight:800;font-size:15px;
-  padding:7px 13px 7px 11px;border-radius:99px;min-height:44px;box-sizing:border-box;
+  padding:9px 14px 9px 12px;border-radius:99px;min-height:48px;box-sizing:border-box;
 }
 .lien-wa svg{width:19px;height:19px;flex:0 0 auto;fill:currentColor}
 
@@ -471,7 +483,7 @@ footer p{margin:0 0 .5em}
   <div class="blob pale" style="width:260px;height:260px;bottom:-130px;left:-110px"></div>
   <div class="wrap">
     <div class="hero-texte">
-      <span class="kicker inv">Ebook PDF + 2 bonus</span>
+      <span class="kicker inv">Ebook PDF + 5 bonus</span>
       <h1>GLACE BUSINESS<em>De ta cuisine à ton premier argent encaissé en 7 jours</em></h1>
       <p class="objection">Même si tu n'as <b>jamais fait de glace de ta vie</b> : sans machine, sans stabilisateur, avec les ingrédients de ton marché — et un budget de départ à ta portée.</p>
       <p class="promesse">10 recettes, et surtout la méthode pour savoir, chiffres en main, si tu gagnes de l'argent.</p>
@@ -481,7 +493,7 @@ footer p{margin:0 0 .5em}
     <ul class="reassure">
       <li><b>38</b>pages</li>
       <li><b>10</b>recettes</li>
-      <li><b>2</b>bonus offerts</li>
+      <li><b>5</b>bonus inclus</li>
       <li><b>PDF</b>reçu tout de suite</li>
       <!-- PREUVE SOCIALE — À ACTIVER SEULEMENT QUAND LE CHIFFRE EST RÉEL :
            retirer l'attribut hidden et remplacer 000 par le nombre exact de
@@ -496,14 +508,14 @@ footer p{margin:0 0 .5em}
 
     <div class="prix-bloc">
       <div class="prix-ligne">
-        <span class="prix-old">18 000 F</span>
-        <span class="prix-new">3 000 F</span>
+        <span class="prix-old">35 000 F</span>
+        <span class="prix-new">5 000 F</span>
       </div>
       <p class="prix-note">Paiement Mobile Money · Téléchargement immédiat · Accès à vie</p>
     </div>
 
     <!-- CTA 1/6 -->
-    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE VEUX LE GUIDE — 3 000 F<small>Reçu tout de suite après le paiement</small></a>
+    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE VEUX LE GUIDE — 5 000 F<small>Reçu tout de suite après le paiement</small></a>
 
     <!-- Voir son propre opérateur affiché lève l'objection « je paie comment ? »
          avant même qu'elle soit formulée. D'où la répétition sous chaque CTA majeur. -->
@@ -513,7 +525,7 @@ footer p{margin:0 0 .5em}
       <li class="mtn">MTN MoMo</li>
       <li class="moov">Moov Money</li>
     </ul>
-    <p class="sous-cta">Fichiers PDF à lire sur ton téléphone et à imprimer.</p>
+    <p class="sous-cta">6 fichiers PDF à lire sur ton téléphone et à imprimer.</p>
   </div>
 </header>
 
@@ -594,7 +606,7 @@ footer p{margin:0 0 .5em}
   <div class="wrap">
     <span class="kicker">Le contenu</span>
     <h2 id="t-contenu">Ce que tu reçois</h2>
-    <p>Un ebook PDF de <strong>38 pages</strong>, en deux parties. La première t'apprend à produire. La seconde t'apprend à gagner.</p>
+    <p><strong>6 fichiers PDF</strong> : l'ebook de 38 pages et les 5 bonus à imprimer. L'ebook est en deux parties — la première t'apprend à produire, la seconde t'apprend à gagner.</p>
 
     <div class="carte">
       <span class="etiq">Partie 1 — Produire</span>
@@ -625,7 +637,7 @@ footer p{margin:0 0 .5em}
     </div>
 
     <!-- CTA 2/6 -->
-    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE PRENDS LE GUIDE — 3 000 F<small>38 pages + 2 bonus imprimables</small></a>
+    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE PRENDS LE GUIDE — 5 000 F<small>38 pages + 5 bonus imprimables</small></a>
     <p class="momo-lab">Paiement en quelques secondes avec</p>
     <ul class="momo">
       <li class="wave">Wave</li>
@@ -641,98 +653,47 @@ footer p{margin:0 0 .5em}
   <div class="blob o" style="width:240px;height:240px;top:-110px;left:-90px"></div>
   <div class="wrap">
     <span class="kicker" style="background:var(--brun);color:var(--jaune)">Offerts avec le guide</span>
-    <h2 id="t-bonus">Les 2 bonus</h2>
-    <p style="color:var(--brun);max-width:44ch">Ce sont eux que tu vas utiliser le plus. Ils s'impriment, se remplissent au stylo, et se refont à chaque fournée.</p>
+    <h2 id="t-bonus">Les 5 bonus</h2>
+    <p style="color:var(--brun);max-width:46ch">Ce sont eux que tu vas utiliser le plus. Cinq fichiers séparés, un par moment de la semaine : ils s'impriment, se remplissent au stylo, et se refont à chaque fournée.</p>
 
-    <div class="carte-bonus">
-      <h3>Bonus 1 — La Calculatrice de Profit</h3>
-      <p><strong>Tu ne vends plus à l'aveugle en espérant que ça passe.</strong> Plus jamais « je crois que j'ai gagné ».<span class="fait">3 fiches A4 à imprimer : coût de revient, prix de vente, seuil de rentabilité, bilan de soirée. Tu remplis au stylo, en 3 minutes.</span></p>
-      <span class="valeur">Valeur 4 000 F</span><span class="offert">→ offert</span>
-    </div>
+    <div class="bonus-grille">
+      <div class="carte-bonus">
+        <h3>Bonus 1 — La Calculatrice de Profit</h3>
+        <p><strong>Tu ne vends plus à l'aveugle en espérant que ça passe.</strong> Plus jamais « je crois que j'ai gagné ».<span class="fait">3 fiches A4 à imprimer : coût de revient, prix de vente et seuil de rentabilité, bilan de soirée. Tu remplis au stylo, en 3 minutes.</span></p>
+        <span class="valeur">Valeur 4 000 F</span><span class="offert">→ offert</span>
+      </div>
 
-    <div class="carte-bonus">
-      <h3>Bonus 2 — Le Plan de Lancement 7 Jours</h3>
-      <p><strong>Tu sais quoi faire aujourd'hui, sans avoir à décider.</strong> Et la fournée test du J2 t'évite de risquer une grosse production avant d'être sûr de ta recette.<span class="fait">Programme à cocher, J1 les courses → J2 la fournée test → J3 la dégustation → J4 le prix → J5 la production → J6 la vente → J7 le bilan chiffré.</span></p>
-      <span class="valeur">Valeur 5 000 F</span><span class="offert">→ offert</span>
+      <div class="carte-bonus">
+        <h3>Bonus 2 — Le Plan de Lancement 7 Jours</h3>
+        <p><strong>Tu sais quoi faire aujourd'hui, sans avoir à décider.</strong> Et la fournée test du J2 t'évite de risquer une grosse production avant d'être sûr de ta recette.<span class="fait">Programme à cocher : J1 les courses → J2 la fournée test → J3 la dégustation des 10 → J4 ton prix → J5 la production → J6 la vente → J7 le bilan chiffré.</span></p>
+        <span class="valeur">Valeur 5 000 F</span><span class="offert">→ offert</span>
+      </div>
+
+      <div class="carte-bonus">
+        <h3>Bonus 3 — Le Kit Vente &amp; Marketing</h3>
+        <p><strong>Tu n'attends plus que les clients passent : tu vas les chercher.</strong> Et le jour où quelqu'un dit « c'est cher », tu as déjà la réponse.<span class="fait">15 messages WhatsApp et TikTok prêts à copier, le script en 4 étapes pour convaincre une revendeuse de vendre pour toi — les 3 objections traitées — et des étiquettes à imprimer.</span></p>
+        <span class="valeur">Valeur 6 500 F</span><span class="offert">→ offert</span>
+      </div>
+
+      <div class="carte-bonus">
+        <h3>Bonus 4 — Le Carnet de Production &amp; Ventes</h3>
+        <p><strong>En deux semaines, tu connais ta meilleure saveur, ton meilleur jour et ton meilleur créneau.</strong> Tu arrêtes de produire au hasard.<span class="fait">Un registre à remplir chaque soir, et la grille qui t'explique comment lire tes propres chiffres.</span></p>
+        <span class="valeur">Valeur 4 500 F</span><span class="offert">→ offert</span>
+      </div>
+
+      <div class="carte-bonus">
+        <h3>Bonus 5 — 10 Saveurs Signature</h3>
+        <p><strong>Tu proposes un parfum que personne ne vend autour de toi, et on ne compare plus ton prix.</strong><span class="fait">Gingembre-citron, bissap, pain de singe, tamarin, mangue mûre, café, coco-ananas, banane-cacahuète, menthe-citron vert, chocolat-coco croquant. Dosages exacts et stratégie de gamme.</span></p>
+        <span class="valeur">Valeur 6 000 F</span><span class="offert">→ offert</span>
+      </div>
     </div>
 
     <!-- CTA 3/6 -->
-    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE VEUX LE GUIDE ET LES 2 BONUS<small>3 000 F — les bonus sont dans le même envoi</small></a>
+    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE VEUX LE GUIDE ET LES 5 BONUS<small>5 000 F — les bonus sont dans le même envoi</small></a>
   </div>
 </section>
 
-<!-- ============ 7. POUR TOI / PAS POUR TOI ============ -->
-<section aria-labelledby="t-pour">
-  <div class="wrap">
-    <span class="kicker">Franchement</span>
-    <h2 id="t-pour">Ceci est pour toi. Ou pas.</h2>
-    <p>Autant le dire avant que tu paies : ce guide ne convient pas à tout le monde.</p>
-
-    <div class="duo">
-      <div class="col oui">
-        <h3>C'est pour toi si…</h3>
-        <ul class="check">
-          <li>Tu veux une activité complémentaire que tu peux démarrer depuis ta cuisine.</li>
-          <li>Tu as déjà essayé la glace et ça s'est arrêté sans que tu saches pourquoi.</li>
-          <li>Tu es prêt à sortir vendre toi-même, au moins au début.</li>
-          <li>Tu acceptes de poser des chiffres sur une feuille, même si tu n'aimes pas ça.</li>
-          <li>Tu as un petit budget de départ et tu ne veux pas le perdre bêtement.</li>
-        </ul>
-      </div>
-      <div class="col non">
-        <h3>Ce n'est pas pour toi si…</h3>
-        <ul class="cross">
-          <li>Tu cherches de l'argent sans travailler.</li>
-          <li>Tu ne comptes pas sortir vendre toi-même, ni faire vendre par quelqu'un.</li>
-          <li>Tu veux un montant de gain garanti à l'avance : personne ne peut te le donner honnêtement.</li>
-          <li>Tu veux juste des recettes gratuites — tu en trouveras sur internet, et tu resteras bloqué au même endroit.</li>
-          <li>Tu n'as pas 7 jours à y consacrer dans les prochaines semaines.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ QUI EST DERRIÈRE CE GUIDE ============
-     Sur ce marché, l'achat d'un produit numérique repose entièrement sur la
-     confiance : le lecteur doit voir une personne, pas un site anonyme.
-     Ce bloc est volontairement livré vide — un texte écrit à ta place sonnerait
-     faux, et c'est exactement ce que le lecteur détecte. -->
-<section class="auteur" aria-labelledby="t-auteur">
-  <div class="wrap">
-    <span class="kicker">Qui te parle</span>
-    <h2 id="t-auteur">Qui est derrière ce guide</h2>
-    <p style="max-width:46ch">Tu n'achètes pas à un site. Tu achètes à quelqu'un, et cette personne répond elle-même sur WhatsApp.</p>
-
-    <div class="auteur-carte">
-      <!-- Recadrage carré depuis la photo verticale d'origine (Angelina.jpeg, non
-           publiée) : 480×480 pour rester net sur les écrans à forte densité, alors
-           que l'affichage ne fait que 120 px. 10 Ko. -->
-      <img class="auteur-photo" src="angelina.webp" width="480" height="480"
-           loading="lazy" decoding="async"
-           alt="Portrait d'Angelina, autrice du guide, souriante, un voile blanc encadrant son visage">
-
-      <div class="auteur-mot">
-        <!-- TEXTE À RELIRE ET À AJUSTER PAR ANGELINA.
-             Il ne contient volontairement aucun fait invérifiable : ni ville, ni
-             nombre d'années d'expérience, ni montant gagné, ni nombre de clientes.
-             Tout ce qui est écrit ici est soit vrai par construction (elle a écrit
-             le guide, elle répond sur WhatsApp), soit une intention.
-             Si tu ajoutes un détail personnel — ta ville, ton métier, la personne
-             qui t'a donné l'idée — il doit être exact : c'est précisément ce genre
-             de détail que le lecteur vérifie en t'écrivant. -->
-        <p>Moi c'est <strong>Angelina</strong>. J'ai écrit ce guide pour une seule chose : que tu sortes vendre ta première fournée cette semaine, et que tu rentres le soir avec de l'argent que tu as compté toi-même — pas pour que tu collectionnes des recettes de plus.</p>
-        <p>Parce que j'ai vu trop de gens autour de moi réussir leur glace, puis arrêter au bout de trois fournées. Pas par manque de talent : parce que personne ne leur avait montré comment compter.</p>
-        <p>Je ne suis pas coach et je ne vends pas de rêve. Je te donne la méthode que j'aurais voulu qu'on me pose sur la table au départ, avec les tableaux à remplir toi-même, avec tes prix à toi.</p>
-        <p>Ce que je veux, c'est qu'au bout de la première semaine tu saches noir sur blanc si ça vaut le coup de continuer — et que si c'est oui, tu puisses recommencer sans moi.</p>
-        <p>Et si tu bloques quelque part, tu m'écris sur WhatsApp. C'est moi qui réponds.</p>
-        <p class="auteur-sign">— Angelina</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TÉMOIGNAGES ============
+<!-- ============ 7. TÉMOIGNAGES ============
      Captures réelles. Numéros et noms masqués.
      Pour en ajouter : dupliquer un bloc .preuve et poser le fichier à côté du HTML.
      N'ajouter ici QUE de vrais retours reçus. Un témoignage inventé se repère,
@@ -797,13 +758,25 @@ footer p{margin:0 0 .5em}
             <th scope="row"><b>Bonus 2 — Le Plan de Lancement 7 Jours</b><span>Un programme à cocher, J1 à J7 : tu ne te demandes jamais quoi faire aujourd'hui</span></th>
             <td>5 000 F</td>
           </tr>
+          <tr>
+            <th scope="row"><b>Bonus 3 — Le Kit Vente &amp; Marketing</b><span>15 messages prêts à copier, le script pour faire vendre par une revendeuse, les étiquettes</span></th>
+            <td>6 500 F</td>
+          </tr>
+          <tr>
+            <th scope="row"><b>Bonus 4 — Le Carnet de Production &amp; Ventes</b><span>Le registre du soir et la grille pour lire tes chiffres au bout de deux semaines</span></th>
+            <td>4 500 F</td>
+          </tr>
+          <tr>
+            <th scope="row"><b>Bonus 5 — 10 Saveurs Signature</b><span>Bissap, pain de singe, tamarin, gingembre-citron… dosages exacts et stratégie de gamme</span></th>
+            <td>6 000 F</td>
+          </tr>
           <tr class="total">
             <th scope="row"><b>VALEUR TOTALE</b></th>
-            <td>18 000 F</td>
+            <td>35 000 F</td>
           </tr>
           <tr class="today">
             <th scope="row"><b>TU PAIES AUJOURD'HUI</b></th>
-            <td>3 000 F</td>
+            <td>5 000 F</td>
           </tr>
         </tbody>
       </table>
@@ -811,19 +784,19 @@ footer p{margin:0 0 .5em}
 
     <!-- POURQUOI CE PRIX — le bloc qui désamorce « où est le piège ». -->
     <div class="pourquoi">
-      <h3>Pourquoi 3 000 F et pas 18 000 F</h3>
+      <h3>Pourquoi 5 000 F et pas 35 000 F</h3>
       <p>Je préfère te le dire franchement, parce que c'est la première chose que je me demanderais à ta place.</p>
-      <p>Ce guide est un fichier. Je n'imprime rien, je ne stocke rien, je ne fais livrer personne — mon coût par acheteur est donc presque nul. Je peux baisser le prix sans toucher au contenu : c'est le même document à 3 000 F qu'à 18 000 F.</p>
-      <p>J'ai choisi 3 000 F parce que c'est ce que la personne à qui je m'adresse peut réellement sortir aujourd'hui, sans emprunter. Un guide que personne n'achète n'aide personne.</p>
+      <p>Ce sont six fichiers. Je n'imprime rien, je ne stocke rien, je ne fais livrer personne — le dixième acheteur me coûte exactement ce que m'a coûté le premier, c'est-à-dire rien. Je peux donc poser un prix bas sans rien enlever au contenu : c'est le même dossier à 5 000 F qu'à 35 000 F.</p>
+      <p>J'ai choisi 5 000 F parce que c'est ce que la personne à qui je m'adresse peut réellement sortir aujourd'hui, sans emprunter et sans y réfléchir trois jours. Un guide que personne n'achète n'aide personne.</p>
       <p>C'est un prix de lancement. Il est appelé à évoluer quand j'aurai ajouté ce que les premiers acheteurs me demandent.</p>
     </div>
 
     <p class="respire clair">Les ingrédients, tu les manges une fois. La méthode, tu la réutilises toute l'année.</p>
 
-    <p class="perspective">3 000 F, c'est le prix de quelques ingrédients au marché. La différence, c'est qu'une fiche de coûts remplie une fois te sert à chaque fournée qui suit.</p>
+    <p class="perspective">5 000 F, c'est à peu près ce que te coûtent les ingrédients d'une fournée. La différence, c'est qu'une fournée se mange, alors qu'une fiche de coûts remplie une fois te sert à chaque fournée qui suit.</p>
 
     <!-- CTA 4/6 -->
-    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">J'ACHÈTE MAINTENANT — 3 000 F<small>Paiement Mobile Money · Accès immédiat</small></a>
+    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">J'ACHÈTE MAINTENANT — 5 000 F<small>Paiement Mobile Money · Accès immédiat</small></a>
     <p class="momo-lab clair">Paiement en quelques secondes avec</p>
     <ul class="momo">
       <li class="wave">Wave</li>
@@ -834,7 +807,78 @@ footer p{margin:0 0 .5em}
   </div>
 </section>
 
-<!-- ============ 9. FAQ ============ -->
+<!-- ============ 9. POUR TOI / PAS POUR TOI ============ -->
+<section aria-labelledby="t-pour">
+  <div class="wrap">
+    <span class="kicker">Franchement</span>
+    <h2 id="t-pour">Ceci est pour toi. Ou pas.</h2>
+    <p>Autant le dire avant que tu paies : ce guide ne convient pas à tout le monde.</p>
+
+    <div class="duo">
+      <div class="col oui">
+        <h3>C'est pour toi si…</h3>
+        <ul class="check">
+          <li>Tu veux une activité complémentaire que tu peux démarrer depuis ta cuisine.</li>
+          <li>Tu as déjà essayé la glace et ça s'est arrêté sans que tu saches pourquoi.</li>
+          <li>Tu es prêt à sortir vendre toi-même, au moins au début.</li>
+          <li>Tu acceptes de poser des chiffres sur une feuille, même si tu n'aimes pas ça.</li>
+          <li>Tu as un petit budget de départ et tu ne veux pas le perdre bêtement.</li>
+        </ul>
+      </div>
+      <div class="col non">
+        <h3>Ce n'est pas pour toi si…</h3>
+        <ul class="cross">
+          <li>Tu cherches de l'argent sans travailler.</li>
+          <li>Tu ne comptes pas sortir vendre toi-même, ni faire vendre par quelqu'un.</li>
+          <li>Tu veux un montant de gain garanti à l'avance : personne ne peut te le donner honnêtement.</li>
+          <li>Tu veux juste des recettes gratuites — tu en trouveras sur internet, et tu resteras bloqué au même endroit.</li>
+          <li>Tu n'as pas 7 jours à y consacrer dans les prochaines semaines.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. QUI EST DERRIÈRE CE GUIDE ============
+     Sur ce marché, l'achat d'un produit numérique repose entièrement sur la
+     confiance : le lecteur doit voir une personne, pas un site anonyme.
+     Ce bloc est volontairement livré vide — un texte écrit à ta place sonnerait
+     faux, et c'est exactement ce que le lecteur détecte. -->
+<section class="auteur" aria-labelledby="t-auteur">
+  <div class="wrap">
+    <span class="kicker">Qui te parle</span>
+    <h2 id="t-auteur">Qui est derrière ce guide</h2>
+    <p style="max-width:46ch">Tu n'achètes pas à un site. Tu achètes à quelqu'un, et cette personne répond elle-même sur WhatsApp.</p>
+
+    <div class="auteur-carte">
+      <!-- Recadrage carré depuis la photo verticale d'origine (Angelina.jpeg, non
+           publiée) : 480×480 pour rester net sur les écrans à forte densité, alors
+           que l'affichage ne fait que 120 px. 10 Ko. -->
+      <img class="auteur-photo" src="angelina.webp" width="480" height="480"
+           loading="lazy" decoding="async"
+           alt="Portrait d'Angelina, autrice du guide, souriante, un voile blanc encadrant son visage">
+
+      <div class="auteur-mot">
+        <!-- TEXTE À RELIRE ET À AJUSTER PAR ANGELINA.
+             Il ne contient volontairement aucun fait invérifiable : ni ville, ni
+             nombre d'années d'expérience, ni montant gagné, ni nombre de clientes.
+             Tout ce qui est écrit ici est soit vrai par construction (elle a écrit
+             le guide, elle répond sur WhatsApp), soit une intention.
+             Si tu ajoutes un détail personnel — ta ville, ton métier, la personne
+             qui t'a donné l'idée — il doit être exact : c'est précisément ce genre
+             de détail que le lecteur vérifie en t'écrivant. -->
+        <p>Moi c'est <strong>Angelina</strong>. J'ai écrit ce guide pour une seule chose : que tu sortes vendre ta première fournée cette semaine, et que tu rentres le soir avec de l'argent que tu as compté toi-même — pas pour que tu collectionnes des recettes de plus.</p>
+        <p>Parce que j'ai vu trop de gens autour de moi réussir leur glace, puis arrêter au bout de trois fournées. Pas par manque de talent : parce que personne ne leur avait montré comment compter.</p>
+        <p>Je ne suis pas coach et je ne vends pas de rêve. Je te donne la méthode que j'aurais voulu qu'on me pose sur la table au départ, avec les tableaux à remplir toi-même, avec tes prix à toi.</p>
+        <p>Ce que je veux, c'est qu'au bout de la première semaine tu saches noir sur blanc si ça vaut le coup de continuer — et que si c'est oui, tu puisses recommencer sans moi.</p>
+        <p>Et si tu bloques quelque part, tu m'écris sur WhatsApp. C'est moi qui réponds.</p>
+        <p class="auteur-sign">— Angelina</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. FAQ ============ -->
 <section class="faq" aria-labelledby="t-faq">
   <div class="blob pale" style="width:260px;height:260px;bottom:-140px;left:-120px"></div>
   <div class="wrap">
@@ -860,8 +904,13 @@ footer p{margin:0 0 .5em}
       <summary>C'est un fichier ou un objet physique ? Je reçois ça comment ?</summary>
       <div class="rep">
         <p>C'est un fichier, pas un colis. Rien n'est livré chez toi, il n'y a ni livreur, ni frais de transport, ni délai.</p>
-        <p>Tu reçois un lien de téléchargement juste après le paiement. Tu ouvres le PDF sur ton téléphone Android, tu l'enregistres, et tu le relis ensuite <strong>sans connexion</strong> — utile quand tu es au marché ou en fournée. Les 2 bonus sont dans le même envoi : ce sont des fiches A4 que tu peux faire imprimer en boutique pour quelques francs, ou simplement recopier sur un cahier.</p>
+        <p>Tu reçois un lien de téléchargement juste après le paiement. Tu ouvres le PDF sur ton téléphone Android, tu l'enregistres, et tu le relis ensuite <strong>sans connexion</strong> — utile quand tu es au marché ou en fournée. Les 5 bonus sont dans le même envoi : ce sont des fiches A4 que tu peux faire imprimer en boutique pour quelques francs, ou simplement recopier sur un cahier.</p>
       </div>
+    </details>
+
+    <details>
+      <summary>Je peux payer avec Mobile Money ?</summary>
+      <div class="rep"><p>Oui : Wave, Orange Money, MTN Money et Moov Money. Le paiement se fait depuis ton téléphone, en quelques secondes, sans carte bancaire.</p></div>
     </details>
 
     <details>
@@ -876,26 +925,21 @@ footer p{margin:0 0 .5em}
     </details>
 
     <details>
-      <summary>Je reçois combien de temps après le paiement ?</summary>
-      <div class="rep"><p>Immédiatement. Dès que le paiement est validé, le lien de téléchargement arrive. Tu gardes les fichiers PDF sur ton téléphone, tu les lis hors connexion, et tu imprimes les 2 bonus quand tu veux. Accès à vie, sans abonnement.</p></div>
-    </details>
-
-    <details>
       <summary>Et si je n'arrive pas à vendre ?</summary>
       <div class="rep"><p>C'est précisément le problème que traite la Partie 2. Tu y trouves 6 terrains concrets, avec les horaires et le format de vente adapté à chacun, plus la méthode pour tester ton prix sur de vrais clients avant de produire en grande quantité. Aucun guide ne peut te garantir des ventes — ce que celui-ci te donne, c'est un plan à suivre et de quoi savoir, chiffres en main, ce qui marche et ce qui ne marche pas.</p></div>
     </details>
 
     <details>
-      <summary>Je peux payer avec Mobile Money ?</summary>
-      <div class="rep"><p>Oui : Wave, Orange Money, MTN Money et Moov Money. Le paiement se fait depuis ton téléphone, en quelques secondes, sans carte bancaire.</p></div>
+      <summary>Je peux imprimer les fiches ?</summary>
+      <div class="rep"><p>Oui, elles sont faites pour ça. Les 5 bonus sont des A4 : tu les fais imprimer en boutique pour quelques francs, ou tu les recopies sur un cahier — la Calculatrice et le Carnet fonctionnent aussi bien à la main. L'ebook, lui, se lit très bien sur le téléphone, hors connexion. Tu gardes les six fichiers à vie, sans abonnement.</p></div>
     </details>
 
     <!-- CTA 5/6 -->
-    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">MA QUESTION A SA RÉPONSE — JE PRENDS<small>3 000 F · Téléchargement immédiat</small></a>
+    <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">MA QUESTION A SA RÉPONSE — JE PRENDS<small>5 000 F · Téléchargement immédiat</small></a>
   </div>
 </section>
 
-<!-- ============ 10. RÉDUCTION DU RISQUE ============ -->
+<!-- ============ 12. RÉDUCTION DU RISQUE ============ -->
 <section class="rassure" aria-labelledby="t-risque">
   <div class="blob" style="width:180px;height:180px;top:-80px;right:-70px;opacity:.25"></div>
   <div class="wrap">
@@ -917,7 +961,7 @@ footer p{margin:0 0 .5em}
   </div>
 </section>
 
-<!-- ============ 11. CTA FINAL ============ -->
+<!-- ============ 13. CTA FINAL ============ -->
 <section class="cloture" aria-labelledby="t-fin">
   <div class="blob" style="width:220px;height:220px;top:-100px;left:-90px;opacity:.3"></div>
   <div class="blob pale" style="width:300px;height:300px;bottom:-160px;right:-130px"></div>
@@ -933,14 +977,14 @@ footer p{margin:0 0 .5em}
 
     <div class="prix-bloc">
       <div class="prix-ligne">
-        <span class="prix-old">18 000 F</span>
-        <span class="prix-new">3 000 F</span>
+        <span class="prix-old">35 000 F</span>
+        <span class="prix-new">5 000 F</span>
       </div>
-      <p class="prix-note">Ebook 38 pages + Calculatrice de Profit + Plan 7 Jours</p>
+      <p class="prix-note">Ebook 38 pages + les 5 bonus imprimables — 6 fichiers PDF</p>
     </div>
 
     <!-- CTA 6/6 -->
-    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE COMMENCE CE SOIR — 3 000 F<small>Téléchargement immédiat · Accès à vie</small></a>
+    <a class="cta jaune" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">JE COMMENCE CE SOIR — 5 000 F<small>Téléchargement immédiat · Accès à vie</small></a>
     <ul class="momo">
       <li class="wave">Wave</li>
       <li class="om">Orange Money</li>
@@ -968,7 +1012,7 @@ footer p{margin:0 0 .5em}
     <span class="chrono-time" aria-hidden="true" hidden><b data-h>00</b><i>h</i><b data-m>00</b><i>m</i><b data-s>00</b><i>s</i></span>
   </p>
   <div class="barre-row">
-    <div class="info"><b>3 000 F</b><span>18 000 F</span></div>
+    <div class="info"><b>5 000 F</b><span>35 000 F</span></div>
     <a class="cta" href="https://astucesconsort.mymaketou.shop/fr/products/le-business-des-glaces-maison-a-petit-budget-recettes-pro-creez-vendez-encaissez-sans-machine/checkout">J'ACHÈTE</a>
   </div>
 </div>
