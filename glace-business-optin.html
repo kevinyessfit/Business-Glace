@@ -278,7 +278,11 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
   content:"";position:absolute;left:0;top:8px;width:15px;height:15px;border-radius:50%;
   background:var(--jaune);border:3px solid var(--orange);
 }
-.liste li b{font-weight:700}
+.liste li b{font-weight:700;display:block}
+/* Le lecteur lit les gras en diagonale : ce sont eux qui doivent convaincre.
+   La ligne .fait rassure celui qui creuse, sans lui voler l'attention. */
+.liste li .fait{display:block;font-size:14px;line-height:1.45;color:#6B5B4B;margin-top:3px}
+.carte-bonus .fait{display:block;font-size:14px;line-height:1.5;color:#C9C9E4;margin-top:5px}
 .note{font-size:14.5px;background:var(--creme);border-radius:var(--r-s);padding:11px 13px;margin:14px 0 0}
 
 /* ---- BONUS ---- */
@@ -643,13 +647,13 @@ footer p{margin:0 0 .5em}
 
     <div class="carte">
       <span class="etiq">Partie 1 — Produire</span>
-      <h3>10 recettes complètes, étape par étape</h3>
+      <h3>Ce soir, tu sors ta première fournée</h3>
       <ul class="liste">
-        <li><b>5 recettes de base :</b> bouillie custard, farine de blé, maïzena, lait pur, 3 ingrédients.</li>
-        <li><b>1 recette professionnelle :</b> plusieurs centaines de sachets par fournée.</li>
-        <li><b>4 recettes bonus :</b> yaourt dèguè, yaourt maison, lait caillé, chocolat grotto glacé.</li>
-        <li><b>Guide des saveurs et colorants :</b> 10 parfums avec les dosages exacts.</li>
-        <li><b>Liens vidéo de démonstration</b> pour voir les gestes, pas seulement les lire.</li>
+        <li><b>Tu maîtrises une recette que tu refais les yeux fermés, même le jour où il te manque un ingrédient.</b><span class="fait">5 recettes de base : bouillie custard, farine de blé, maïzena, lait pur, 3 ingrédients.</span></li>
+        <li><b>Le jour où on te commande gros, tu ne refuses pas la commande.</b><span class="fait">1 recette de production : plusieurs centaines de sachets par fournée.</span></li>
+        <li><b>Quand la glace ne part pas, tu as autre chose à vendre le lendemain.</b><span class="fait">4 recettes en plus : yaourt dèguè, yaourt maison, lait caillé, chocolat grotto glacé.</span></li>
+        <li><b>Tu proposes un parfum que personne ne vend autour de toi — et on arrête de comparer ton prix.</b><span class="fait">Guide des saveurs et colorants : 10 parfums avec les dosages exacts.</span></li>
+        <li><b>Tu vois le geste au lieu de le deviner.</b><span class="fait">Liens vidéo de démonstration sur les étapes qui se ratent le plus souvent.</span></li>
       </ul>
       <p class="note">Sans machine. Sans stabilisateur. Sans émulsifiant. Avec ce que tu trouves au marché à côté de chez toi.</p>
     </div>
@@ -661,10 +665,10 @@ footer p{margin:0 0 .5em}
       <h3>C'est ici que se joue la différence</h3>
       <p>Des recettes de glace, il en circule partout, souvent gratuitement. Ce que personne ne t'explique, c'est ce qui vient après la fournée.</p>
       <ul class="liste">
-        <li><b>Le calcul de rentabilité complet :</b> les 6 postes de coût que tout le monde oublie, le tableau à remplir, et la règle du ×3 pour fixer ton prix.</li>
-        <li><b>Le kit de démarrage en 3 budgets :</b> tu commences avec ce que tu as, pas avec ce que tu n'as pas.</li>
-        <li><b>SOS — 12 problèmes de fabrication :</b> ça n'a pas pris, c'est trop dur, c'est granuleux… la cause et la solution, à chaque fois.</li>
-        <li><b>Tes 30 premiers clients :</b> 6 terrains concrets, avec les horaires et le format de vente qui va avec chacun.</li>
+        <li><b>Tu sais, au franc près, ce qu'il te reste quand la soirée est finie.</b><span class="fait">Le calcul de rentabilité : les 6 postes de coût que tout le monde oublie, le tableau à remplir, la règle du ×3 pour poser ton prix.</span></li>
+        <li><b>Tu démarres avec ce que tu as déjà, au lieu d'attendre d'avoir « assez ».</b><span class="fait">Le kit de démarrage décliné en 3 budgets, du plus serré au plus confortable.</span></li>
+        <li><b>Ta fournée rate à 22 h ? Tu trouves la cause en deux minutes au lieu de tout jeter.</b><span class="fait">SOS : 12 problèmes de fabrication — ça n'a pas pris, c'est trop dur, c'est granuleux… la cause et la solution à chaque fois.</span></li>
+        <li><b>Demain, tu sais où te poser, à quelle heure, et sous quelle forme vendre.</b><span class="fait">Tes 30 premiers clients : 6 terrains concrets, avec l'horaire et le format de vente qui va avec chacun.</span></li>
       </ul>
       <p class="note"><strong>Honnête :</strong> le guide ne te donne pas de montants tout calculés — les prix bougent d'un marché à l'autre et d'un mois à l'autre. Il te donne la méthode et les tableaux à remplir avec <em>tes</em> prix, ceux de ton quartier.</p>
     </div>
@@ -691,13 +695,13 @@ footer p{margin:0 0 .5em}
 
     <div class="carte-bonus">
       <h3>Bonus 1 — La Calculatrice de Profit</h3>
-      <p><strong>3 fiches A4 à imprimer.</strong> Coût de revient, prix de vente, seuil de rentabilité, bilan de soirée. Tu remplis au stylo en 3 minutes, et tu sais où tu en es. Plus jamais « je crois que j'ai gagné ».</p>
+      <p><strong>Tu ne vends plus à l'aveugle en espérant que ça passe.</strong> Plus jamais « je crois que j'ai gagné ».<span class="fait">3 fiches A4 à imprimer : coût de revient, prix de vente, seuil de rentabilité, bilan de soirée. Tu remplis au stylo, en 3 minutes.</span></p>
       <span class="valeur">Valeur 4 000 F</span><span class="offert">→ offert</span>
     </div>
 
     <div class="carte-bonus">
       <h3>Bonus 2 — Le Plan de Lancement 7 Jours</h3>
-      <p><strong>Un programme à cocher, jour par jour.</strong> J1 les courses → J2 la fournée test → J3 la dégustation des 10 → J4 le prix → J5 la production → J6 la vente → J7 le bilan chiffré. Tu ne te demandes jamais quoi faire aujourd'hui : c'est écrit.</p>
+      <p><strong>Tu sais quoi faire aujourd'hui, sans avoir à décider.</strong> Et la fournée test du J2 t'évite de risquer une grosse production avant d'être sûr de ta recette.<span class="fait">Programme à cocher, J1 les courses → J2 la fournée test → J3 la dégustation → J4 le prix → J5 la production → J6 la vente → J7 le bilan chiffré.</span></p>
       <span class="valeur">Valeur 5 000 F</span><span class="offert">→ offert</span>
     </div>
 
