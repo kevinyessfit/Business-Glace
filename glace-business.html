@@ -1,8 +1,8 @@
 <!doctype html>
-<!-- La classe sans-chrono est l'état par défaut : aucune urgence affichée tant
-     qu'une vraie date de fin n'a pas été posée dans DATE_FIN_PROMO (voir le JS
-     en bas de page). Elle est retirée par le script uniquement si cette date
-     existe et n'est pas dépassée. Sans JS, la page reste donc sans compteur. -->
+<!-- La classe sans-chrono est l'état de départ : le compteur reste masqué
+     jusqu'à ce que le JS de bas de page l'allume, ce qui évite d'afficher
+     « 00h00m00s » pendant le chargement. Sans JS, elle n'est jamais retirée :
+     la page perd son compteur et la barre d'achat se raccourcit d'autant. -->
 <html lang="fr" class="sans-chrono">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -235,6 +235,23 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
 .compteur-social b{
   display:block;font-size:clamp(34px,10vw,46px);font-weight:800;
   line-height:1;margin:0 0 3px;letter-spacing:-.01em;
+}
+
+/* ---- PLACES LIMITEES ----
+   Meme bloc dans le hero (sur la video) et dans la section prix (fond brun) :
+   panneau opaque + filet jaune, donc lisible sur les deux. */
+.places{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin:0 0 14px;padding:11px 14px;
+  background:rgba(58,33,19,.88);border:2px solid var(--jaune);
+  border-radius:var(--r-m);color:#FFF3CF;text-align:left;
+  font-family:var(--titre);font-weight:700;
+  font-size:clamp(14px,3.9vw,16.5px);line-height:1.25;
+  position:relative;z-index:2;
+}
+.places b{
+  color:var(--jaune);font-weight:800;font-size:clamp(30px,8vw,38px);
+  line-height:1;flex:0 0 auto;
 }
 .preuves-hero .piste{
   display:flex;gap:10px;margin:0;padding:0 0 8px;list-style:none;
@@ -613,6 +630,12 @@ footer p{margin:0 0 .5em}
       <p class="aide">Glisse pour lire les autres →</p>
     </div>
 
+    <!-- RARETÉ — même règle que le compteur : ce chiffre engage. 9 places par
+         jour veut dire qu'à la 9e vente de la journée, la page se ferme ou le
+         prix change réellement. Si les ventes ne sont pas plafonnées pour de
+         bon, retirer ce bloc plutôt que de le laisser mentir. -->
+    <p class="places"><b>9</b> places par jour pour la formation — au-delà, c'est le lendemain.</p>
+
     <div class="hero-texte">
       <span class="kicker inv">Ebook PDF + 5 bonus</span>
       <h1>GLACE BUSINESS<em>De ta cuisine à ton premier argent encaissé en 7 jours</em></h1>
@@ -885,12 +908,15 @@ footer p{margin:0 0 .5em}
     <img class="banniere" src="glace-business-702.webp" width="702" height="260" loading="lazy" decoding="async"
          alt="Bannière GLACE BUSINESS : l'assortiment complet de glaces artisanales et la mention des bonus inclus">
 
-    <!-- Compteur masqué par défaut (classe sans-chrono sur <html>). Il n'apparaît
-         que si une vraie date de fin est renseignée dans DATE_FIN_PROMO. -->
+    <!-- Compteur : la classe sans-chrono sur <html> le garde masqué jusqu'à ce
+         que le JS l'allume. Sans JS, aucune case vide, la barre est juste plus
+         courte. Échéance : minuit chez le visiteur, remise à 24 h chaque nuit. -->
     <p class="chrono" data-chrono>
-      <span class="chrono-lab">Fin du prix de lancement</span>
+      <span class="chrono-lab">Le prix de 3 000 F se termine à minuit</span>
       <span class="chrono-time" aria-hidden="true" hidden><b data-h>00</b><i>h</i><b data-m>00</b><i>m</i><b data-s>00</b><i>s</i></span>
     </p>
+
+    <p class="places"><b>9</b> places par jour pour la formation — au-delà, c'est le lendemain.</p>
 
     <div class="stack">
       <table class="tableau">
@@ -1158,7 +1184,7 @@ footer p{margin:0 0 .5em}
      abandons sur trafic TikTok. -->
 <div class="barre" role="region" aria-label="Offre et achat rapide">
   <p class="chrono chrono--barre" data-chrono>
-    <span class="chrono-lab">Fin du prix de lancement</span>
+    <span class="chrono-lab">Prix du jour · fin à minuit</span>
     <span class="chrono-time" aria-hidden="true" hidden><b data-h>00</b><i>h</i><b data-m>00</b><i>m</i><b data-s>00</b><i>s</i></span>
   </p>
   <div class="barre-row">
@@ -1205,52 +1231,43 @@ footer p{margin:0 0 .5em}
   if(c&&c.addEventListener)c.addEventListener('change',charger);
 })();
 
-/* ---- COMPTE À REBOURS — DÉSACTIVÉ PAR DÉFAUT ----
+/* ---- COMPTE À REBOURS QUOTIDIEN ----
 
-   DATE_FIN_PROMO : mettre null tant qu'aucune date de fin réelle n'est décidée.
-   Un compteur qui se remet à zéro chaque nuit est une fausse urgence : le
-   visiteur qui revient le lendemain le voit, et il ne croit plus rien de la page.
+   L'échéance est minuit, heure locale du visiteur, et elle est recalculée à
+   chaque seconde : à 00:00:00 le compteur repart de 23:59:59 tout seul, sans
+   rechargement et sans stockage. Deux visiteurs dans le même fuseau voient le
+   même chiffre — rien n'est mémorisé par navigateur, donc rien ne redémarre
+   parce qu'on rafraîchit la page.
 
-   Pour activer, remplacer null par la date et l'heure réelles de fin de l'offre,
-   au format ISO avec le décalage horaire (UTC+1 pour Cotonou, Abidjan est en
-   UTC+0 — écrire le décalage du fuseau depuis lequel TU décides de l'offre) :
-
-       var DATE_FIN_PROMO = '2026-09-15T23:59:00+01:00';
-
-   Le prix affiché doit réellement changer à cette date. Sinon, laisser null. */
-var DATE_FIN_PROMO = null;
-
+   CE QUE ÇA ENGAGE : le prix doit vraiment remonter à minuit et redescendre
+   pour la journée suivante. Un visiteur qui revient demain reverra un compteur
+   sur le même prix ; si le prix n'a pas bougé entre-temps, il comprend que
+   l'urgence est décorative, et il cesse de croire le reste de la page. Le jour
+   où l'offre devient permanente, supprimer ce bloc — pas le déguiser. */
 (function(){
-  var fin=DATE_FIN_PROMO?new Date(DATE_FIN_PROMO):null;
-  if(!fin||isNaN(fin)||fin<=new Date())return;     /* pas de date, date illisible ou déjà passée */
-
   var blocs=document.querySelectorAll('[data-chrono]');
   if(!blocs.length)return;
   document.documentElement.classList.remove('sans-chrono');
 
   var pad=function(n){return n<10?'0'+n:''+n};
-  var id=setInterval(tick,1000);
 
   function tick(){
-    var reste=Math.floor((fin-new Date())/1000);
-    if(reste<=0){                                   /* offre terminée : on retire le compteur */
-      clearInterval(id);
-      document.documentElement.classList.add('sans-chrono');
-      return;
-    }
-    var j=Math.floor(reste/86400);
-    var h=pad(Math.floor(reste%86400/3600)),m=pad(Math.floor(reste%3600/60)),s=pad(reste%60);
+    var now=new Date();
+    var minuit=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,0,0);
+    /* Le modulo ne sert qu'à la seconde exacte de minuit : l'écart vaut alors
+       86 400 s et afficherait « 24h » dans un emplacement à deux chiffres. */
+    var reste=Math.max(0,Math.floor((minuit-now)/1000))%86400;
+    var h=pad(Math.floor(reste/3600)),m=pad(Math.floor(reste%3600/60)),s=pad(reste%60);
     for(var i=0;i<blocs.length;i++){
       var t=blocs[i].querySelector('.chrono-time');
       if(t.hidden)t.hidden=false;
-      /* Au-delà de 24 h, les heures affichées incluent les jours écoulés :
-         « 52h » est plus parlant qu'un compteur de jours séparé sur une barre étroite. */
-      t.querySelector('[data-h]').textContent=j?(j*24+ +h):h;
+      t.querySelector('[data-h]').textContent=h;
       t.querySelector('[data-m]').textContent=m;
       t.querySelector('[data-s]').textContent=s;
     }
   }
   tick();
+  setInterval(tick,1000);
 })();
 
 </script>
